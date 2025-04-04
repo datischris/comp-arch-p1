@@ -32,7 +32,7 @@ module register_file(
     output reg [15:0] reg2
     );
     
-    reg [15:0] RM[0:15]; //addressing $s0 (0) to $s15 (16) in register array as per 5.3 instruction document
+    reg [15:0] RM[0:15]; //addressing $s1 (line 1 -> 0th index) to $s15 (line 16 -> 15th index) in register array as per 5.3 instruction document
     
     initial
     begin
