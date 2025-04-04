@@ -24,6 +24,7 @@ module register_file(
     input [3:0] rs,
     input [3:0] rt_rd,
     input [3:0] write_reg,
+//       input clockrise,
     input [15:0] write_data,
     input ctrl_sig,
     
@@ -43,6 +44,8 @@ module register_file(
         reg1 = RM[rs];
         reg2 = RM[rt_rd];
     end
+    
+    
     
     // TODO: include ctrl_sig for reg WB and adjust for clock rising edge!!
     

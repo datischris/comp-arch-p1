@@ -22,6 +22,7 @@
 
 module program_counter(
     input [15:0] in_address,
+//    input clockrise,    
     output reg [15:0] out_address,
     output reg [15:0] next_address
     );
