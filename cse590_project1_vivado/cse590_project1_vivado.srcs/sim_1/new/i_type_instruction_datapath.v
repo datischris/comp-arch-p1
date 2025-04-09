@@ -36,16 +36,15 @@ module i_type_instruction_datapath();
     wire [3:0] opcode;
     wire [3:0] rt_rd;
     wire [3:0] rs;
-    wire [3:0] funct, immediate;
+    wire [3:0] funct;
     wire [11:0] address;
 
-    // required for control unit
-    wire write_enable;
+    // required for control unit and ALU
+    wire write_enable, ALUSrc;
     wire [3:0]  ALUOp;
-    wire [15:0] reg1, reg2;
-    wire [15:0] ALURes;
+    wire [15:0] rd1, rd2, se_immediate, mux_rd2, ALURes;
     
-    //  required for startup / datapath signals
+    // required for pc start + datapath signals
     reg clock, start;
 
     program_counter pc_inst(
@@ -61,18 +60,20 @@ module i_type_instruction_datapath();
          .instruction(instruction)
     );
     
-    assign opcode = instruction[15:12];
-    assign rt_rd  = instruction[11:8];
-    assign rs     = instruction[7:4];
-    assign funct  = instruction[3:0];
+    assign opcode    = instruction[15:12];
+    assign rt_rd     = instruction[11:8];
+    assign rs        = instruction[7:4];
+    assign funct     = instruction[3:0];
     
     
     control_unit cu_inst(
          .opcode(opcode),
          .funct(funct),
          .write_enable(write_enable),
+         .ALUSrc(ALUSrc),
          .ALUOp(ALUOp)
     );
+    
 
     register_file rf_inst(
          .rs(rs),
@@ -81,14 +82,28 @@ module i_type_instruction_datapath();
          .clock(clock),
          .write_data(ALURes),
          .write_enable(write_enable),
-         .reg1(reg1),
-         .reg2(reg2)
+         .rd1(rd1),
+         .rd2(rd2) 
     );
     
-
+    
+    sign_extend se_inst(
+         .immediate(funct),
+         .se_immediate(se_immediate)
+    );
+    
+    
+    mux_2_to_1_16bit mux_inst_1(
+        .A(rd2),
+        .B(se_immediate),
+        .src(ALUSrc),
+        .out(mux_rd2)
+    );
+    
+    
     alu alu_inst(
-         .A(reg1),
-         .B(reg2),
+         .A(rd1),
+         .B(mux_rd2),
          .ALUOp(ALUOp),
          .ALURes(ALURes)
     );
@@ -106,7 +121,7 @@ module i_type_instruction_datapath();
         start = 1; #10; start = 0; #5; pc_in = 16'd0;
         
         // cycle through first 4 instructions (r-type)
-        repeat (4) 
+        repeat (5) 
         begin
             #10; pc_in = pc_out;  // feed pc_out to the next pc_in
         end
@@ -114,5 +129,7 @@ module i_type_instruction_datapath();
         $writememb("final_register_state.txt", rf_inst.RM);
         
         $finish;
-     end
+        
+        
+    end
 endmodule
