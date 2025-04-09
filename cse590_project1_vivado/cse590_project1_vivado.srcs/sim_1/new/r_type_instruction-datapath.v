@@ -26,10 +26,20 @@ module r_type_instruction_datapath();
     reg  [15:0] pc_in;                
     wire [15:0] pc_out;
     
+    // required for pc start + datapath signals
+    reg clock, start;
+    
+    program_counter pc_inst(
+         .pc_in(pc_in),
+         .clock(clock),
+         .start(start),
+         .pc_out(pc_out)
+    );
+    
     // required for instruction memory
     wire [15:0] instruction;
 
-    // required for instruction memory breakdown
+    // instruction memory breakdown
     // [15:12] opcode, [11:8] rt_rd, [7:4] rs, [3:0] funct -> r-type
     // [15:12] opcode, [11:8] rt_rd, [7:4] rs, [3:0] immediate -> i-type
     // [15:12] opcode, [11:0] address -> j-type
@@ -38,21 +48,6 @@ module r_type_instruction_datapath();
     wire [3:0] rs;
     wire [3:0] funct;
     wire [11:0] address;
-
-    // required for control unit and ALU
-    wire write_enable, ALUSrc;
-    wire [3:0]  ALUOp;
-    wire [15:0] rd1, rd2, se_immediate, mux_rd2, ALURes;
-    
-    // required for pc start + datapath signals
-    reg clock, start;
-
-    program_counter pc_inst(
-         .pc_in(pc_in),
-         .clock(clock),
-         .start(start),
-         .pc_out(pc_out)
-    );
     
     instruction_mem im_inst(
          .pc_out(pc_out),
@@ -66,10 +61,18 @@ module r_type_instruction_datapath();
     assign funct     = instruction[3:0];
     
     
+    // required for control unit ALU and nearby logic
+    wire write_enable, ALUSrc, read_mem, write_mem, mem_to_reg;
+    wire [3:0]  ALUOp;
+    wire [15:0] rd1, rd2, se_immediate, mux_rd2, ALURes, wb_data;
+    
     control_unit cu_inst(
          .opcode(opcode),
          .funct(funct),
          .write_enable(write_enable),
+         .write_mem(write_mem),
+         .read_mem(read_mem),
+         .mem_to_reg(mem_to_reg),
          .ALUSrc(ALUSrc),
          .ALUOp(ALUOp)
     );
@@ -80,7 +83,7 @@ module r_type_instruction_datapath();
          .rt_rd(rt_rd),
          .write_reg(rt_rd),
          .clock(clock),
-         .write_data(ALURes),
+         .write_data(wb_data),
          .write_enable(write_enable),
          .rd1(rd1),
          .rd2(rd2) 
@@ -108,7 +111,25 @@ module r_type_instruction_datapath();
          .ALURes(ALURes)
     );
     
-
+    wire [15:0] dm_data;
+    
+    data_memory dm_inst(
+        .clock(clock),
+        .write_data(rt_rd),
+        .write_mem(write_mem),
+        .read_mem(read_mem),
+        .dm_address(ALURes),
+        .dm_data(dm_data)
+    );
+    
+    mux_2_to_1_16bit mux_inst_2(
+        .A(ALURes),
+        .B(dm_data),
+        .src(mem_to_reg),
+        .out(wb_data)
+    );
+    
+    
     initial
     begin
           clock = 0;
@@ -121,22 +142,20 @@ module r_type_instruction_datapath();
         start = 1; #10; start = 0; #5; pc_in = 16'd0;
         
         // cycle through first 4 instructions (r-type)
-        repeat (5) 
+        repeat (6) 
         begin
             #10; pc_in = pc_out;  // feed pc_out to the next pc_in
         end
         
-        $writememb("final_register_state.txt", rf_inst.RM);
+        #10; $writememb("final_register_state.txt", rf_inst.RM);
         
         $finish;
-        
+    end
+endmodule
+
     //    // Display the simulation data
     //    $display("Time = %0t ns", $time);
     //    $display("Fetched Instruction = %h", instruction);
     //    $display("Decoded fields: opcode = %b, rt_rd = %b, rs = %b, funct = %b", opcode, rt_rd, rs, funct);
     //    $display("Register values: reg1 = %d, reg2 = %d", reg1, reg2);
     //    $display("ALU Result (Final Output) = %d", ALURes);
-        
-        
-    end
-endmodule

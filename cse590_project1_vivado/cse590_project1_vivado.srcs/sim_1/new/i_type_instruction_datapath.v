@@ -108,6 +108,8 @@ module i_type_instruction_datapath();
          .ALURes(ALURes)
     );
     
+    
+    
 
     initial
     begin
@@ -120,16 +122,14 @@ module i_type_instruction_datapath();
     begin
         start = 1; #10; start = 0; #5; pc_in = 16'd0;
         
-        // cycle through first 4 instructions (r-type)
-        repeat (5) 
+        // cycle through first 5 instructions (r-type and i-type)
+        repeat (4) 
         begin
             #10; pc_in = pc_out;  // feed pc_out to the next pc_in
         end
         
-        $writememb("final_register_state.txt", rf_inst.RM);
+        #20; $writememb("final_register_state.txt", rf_inst.RM);
         
         $finish;
-        
-        
     end
 endmodule

@@ -24,6 +24,9 @@ module control_unit(
     input [3:0] opcode,
     input [3:0] funct,
     output reg write_enable,
+    output reg write_mem,
+    output reg read_mem,
+    output reg mem_to_reg,
     output reg ALUSrc,
     output reg [3:0] ALUOp
     );
@@ -34,6 +37,9 @@ module control_unit(
               4'b0000: // r-type
                   begin 
                     write_enable = 1'b1;
+                    read_mem = 1'b0;
+                    write_mem = 1'b0;
+                    mem_to_reg = 1'b0;
                     ALUSrc = 1'b0;
                     ALUOp = funct; 
                     
@@ -41,6 +47,18 @@ module control_unit(
               4'b0011: // addi
                    begin
                     write_enable = 1'b1;
+                    read_mem = 1'b0;
+                    write_mem = 1'b0;
+                    mem_to_reg = 1'b0;
+                    ALUSrc = 1'b1;
+                    ALUOp = 0000;
+                   end
+              4'b0001: // lw
+                   begin
+                    write_enable = 1'b1;
+                    read_mem = 1'b1;
+                    write_mem = 1'b0;
+                    mem_to_reg = 1'b1;
                     ALUSrc = 1'b1;
                     ALUOp = 0000;
                    end
