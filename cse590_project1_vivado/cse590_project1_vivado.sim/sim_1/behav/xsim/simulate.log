@@ -1,2 +1,2 @@
 Time resolution is 1 ps
-$finish called at time : 85 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/r_type_instruction-datapath.v" Line 152
+$finish called at time : 105 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/r_type_instruction-datapath.v" Line 160

@@ -34,41 +34,42 @@ module data_memory(
     initial
     begin
         DM[0]  = 8'd0;
-        DM[1]  = 8'd1;
-        DM[2]  = 8'd2;
-        DM[3]  = 8'd3;
-        DM[4]  = 8'd4;
-        DM[5]  = 8'd5;
-        DM[6]  = 8'd6;
-        DM[7]  = 8'd7;
-        DM[8]  = 8'd8;
-        DM[9]  = 8'd9;
-        DM[10] = 8'd0;  // using this for lw
-        DM[11] = 8'd10; // using this for lw
-        DM[12] = 8'd12;
-        DM[13] = 8'd13;
-        DM[14] = 8'd14;
-        DM[15] = 8'd15;
-        DM[16] = 8'd16;
-        DM[17] = 8'd17;
-        DM[18] = 8'd18;
-        DM[19] = 8'd19;
-        DM[20] = 8'd20;
-        DM[21] = 8'd21;
-        DM[22] = 8'd22;
-        DM[23] = 8'd23;
-        DM[24] = 8'd24;
-        DM[25] = 8'd25;
-        DM[26] = 8'd26;
-        DM[27] = 8'd27;
-        DM[28] = 8'd28;
-        DM[29] = 8'd29;
-        DM[30] = 8'd30;
-        DM[31] = 8'd31;
+        DM[1]  = 8'd0;
+        DM[2]  = 8'd0;
+        DM[3]  = 8'd0;
+        DM[4]  = 8'd0;
+        DM[5]  = 8'd0;
+        DM[6]  = 8'd0;
+        DM[7]  = 8'd0;
+        DM[8]  = 8'd0;
+        DM[9]  = 8'd0;
+        DM[10] = 8'd0;      // using this for lw
+        DM[11] = 8'd10;     // using this for lw
+        DM[12] = 8'd0;
+        DM[13] = 8'd0;
+        DM[14] = 8'd0;
+        DM[15] = 8'd0;
+        DM[16] = 8'd0;      // using this for sw
+        DM[17] = 8'd0;      // using this for sw
+        DM[18] = 8'd0;
+        DM[19] = 8'd0;
+        DM[20] = 8'd0;
+        DM[21] = 8'd0;
+        DM[22] = 8'd0;
+        DM[23] = 8'd0;
+        DM[24] = 8'd0;
+        DM[25] = 8'd0;
+        DM[26] = 8'd0;
+        DM[27] = 8'd0;
+        DM[28] = 8'd0;
+        DM[29] = 8'd0;
+        DM[30] = 8'd0;
+        DM[31] = 8'd0;
     end
     
     always @(*)
     begin
+        dm_data = 16'd0;
         if (read_mem)
         begin
             dm_data <= {DM[dm_address], DM[dm_address + 1]};
@@ -78,10 +79,10 @@ module data_memory(
     always @(posedge clock)
     begin
         if (write_mem)
-            begin
-                DM[dm_address] <= write_data[15:8]; // MSB
-                DM[dm_address + 1] <= write_data[7:0]; //LSB
-            end
+        begin
+            DM[dm_address] <= write_data[15:8]; // MSB
+            DM[dm_address + 1] <= write_data[7:0]; //LSB
+        end
     end
     
 endmodule

@@ -33,22 +33,25 @@ module control_unit(
     
     always @(*)
     begin
+        
+        // default values so we dont carry over signals
+        write_enable = 1'b0;
+        write_mem    = 1'b0;
+        read_mem     = 1'b0;
+        mem_to_reg   = 1'b0;
+        ALUSrc       = 1'b0;
+        ALUOp        = 4'b0000;
+        
         case(opcode)
               4'b0000: // r-type
                   begin 
                     write_enable = 1'b1;
-                    read_mem = 1'b0;
-                    write_mem = 1'b0;
                     mem_to_reg = 1'b0;
-                    ALUSrc = 1'b0;
-                    ALUOp = funct; 
-                    
+                    ALUOp = funct;
                   end
               4'b0011: // addi
                    begin
                     write_enable = 1'b1;
-                    read_mem = 1'b0;
-                    write_mem = 1'b0;
                     mem_to_reg = 1'b0;
                     ALUSrc = 1'b1;
                     ALUOp = 0000;
@@ -57,11 +60,16 @@ module control_unit(
                    begin
                     write_enable = 1'b1;
                     read_mem = 1'b1;
-                    write_mem = 1'b0;
                     mem_to_reg = 1'b1;
                     ALUSrc = 1'b1;
                     ALUOp = 0000;
                    end
+              4'b0010: // sw
+                   begin
+                    write_mem = 1'b1;
+                    ALUSrc = 1'b1;
+                    ALUOp = 0000;
+                   end               
               
         endcase
     end

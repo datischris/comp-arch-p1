@@ -64,7 +64,7 @@ module r_type_instruction_datapath();
     // required for control unit ALU and nearby logic
     wire write_enable, ALUSrc, read_mem, write_mem, mem_to_reg;
     wire [3:0]  ALUOp;
-    wire [15:0] rd1, rd2, se_immediate, mux_rd2, ALURes, wb_data;
+    wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data;
     
     control_unit cu_inst(
          .opcode(opcode),
@@ -79,8 +79,8 @@ module r_type_instruction_datapath();
     
 
     register_file rf_inst(
-         .rs(rs),
          .rt_rd(rt_rd),
+         .rs(rs),
          .write_reg(rt_rd),
          .clock(clock),
          .write_data(wb_data),
@@ -103,9 +103,16 @@ module r_type_instruction_datapath();
         .out(mux_rd2)
     );
     
+    mux_2_to_1_16bit mux_inst_2(
+        .A(rd1),
+        .B(rd2),
+        .src(ALUSrc),
+        .out(mux_rd1)
+    );
+    
     
     alu alu_inst(
-         .A(rd1),
+         .A(mux_rd1),
          .B(mux_rd2),
          .ALUOp(ALUOp),
          .ALURes(ALURes)
@@ -115,14 +122,14 @@ module r_type_instruction_datapath();
     
     data_memory dm_inst(
         .clock(clock),
-        .write_data(rt_rd),
+        .write_data(rd1),
         .write_mem(write_mem),
         .read_mem(read_mem),
         .dm_address(ALURes),
         .dm_data(dm_data)
     );
     
-    mux_2_to_1_16bit mux_inst_2(
+    mux_2_to_1_16bit mux_inst_3(
         .A(ALURes),
         .B(dm_data),
         .src(mem_to_reg),
@@ -141,21 +148,15 @@ module r_type_instruction_datapath();
     begin
         start = 1; #10; start = 0; #5; pc_in = 16'd0;
         
-        // cycle through first 4 instructions (r-type)
-        repeat (6) 
+        // cycle through first 7 instructions (4 r-type, 3 i-type)
+        repeat (7) 
         begin
             #10; pc_in = pc_out;  // feed pc_out to the next pc_in
         end
         
-        #10; $writememb("final_register_state.txt", rf_inst.RM);
+        #10;$writememb("final_register_state.txt", rf_inst.RM);
+        #10;$writememb("final_data_memory_state.txt", dm_inst.DM);
         
         $finish;
     end
 endmodule
-
-    //    // Display the simulation data
-    //    $display("Time = %0t ns", $time);
-    //    $display("Fetched Instruction = %h", instruction);
-    //    $display("Decoded fields: opcode = %b, rt_rd = %b, rs = %b, funct = %b", opcode, rt_rd, rs, funct);
-    //    $display("Register values: reg1 = %d, reg2 = %d", reg1, reg2);
-    //    $display("ALU Result (Final Output) = %d", ALURes);

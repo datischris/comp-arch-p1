@@ -21,15 +21,15 @@
 
 
 module register_file(
-    input [3:0] rs,
     input [3:0] rt_rd,
+    input [3:0] rs,
     input [3:0] write_reg,
     input clock,
     input [15:0] write_data,
     input write_enable,
     
-    output reg [15:0] rd1,
-    output reg [15:0] rd2
+    output reg [15:0] rd1, // rt_rd
+    output reg [15:0] rd2  // rs
     );
     
     reg [15:0] RM[0:15]; //addressing $s1 (line 1 -> 0th index) to $s15 (line 16 -> 15th index) in register array as per 5.3 instruction document
@@ -41,8 +41,8 @@ module register_file(
     
     always @(*) 
     begin
-      rd1 = RM[rs];
-      rd2 = RM[rt_rd];
+      rd1 = RM[rt_rd];
+      rd2 = RM[rs];
     end
     
     
