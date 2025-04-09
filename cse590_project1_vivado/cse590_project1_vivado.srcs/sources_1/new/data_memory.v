@@ -29,7 +29,6 @@ module data_memory(
     output reg [15:0] dm_data
     );
     
-    reg [7:0] byte_address;
     reg [7:0] DM[0:255];
     
     initial
@@ -44,8 +43,8 @@ module data_memory(
         DM[7]  = 8'd7;
         DM[8]  = 8'd8;
         DM[9]  = 8'd9;
-        DM[10] = 8'd0;
-        DM[11] = 8'd10;
+        DM[10] = 8'd0;  // using this for lw
+        DM[11] = 8'd10; // using this for lw
         DM[12] = 8'd12;
         DM[13] = 8'd13;
         DM[14] = 8'd14;
@@ -68,18 +67,20 @@ module data_memory(
         DM[31] = 8'd31;
     end
     
+    always @(*)
+    begin
+        if (read_mem)
+        begin
+            dm_data <= {DM[dm_address], DM[dm_address + 1]};
+        end
+    end
+    
     always @(posedge clock)
     begin
-        byte_address = dm_address[7:0] << 1;
-    
         if (write_mem)
             begin
-                DM[byte_address] <= write_data[15:8]; // MSB
-                DM[byte_address + 1] <= write_data[7:0]; //LSB
-            end
-        else
-            begin
-                dm_data <= {DM[byte_address], DM[byte_address + 1]};
+                DM[dm_address] <= write_data[15:8]; // MSB
+                DM[dm_address + 1] <= write_data[7:0]; //LSB
             end
     end
     
