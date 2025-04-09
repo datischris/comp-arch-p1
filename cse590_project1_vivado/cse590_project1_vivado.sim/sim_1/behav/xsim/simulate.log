@@ -1,8 +1,2 @@
 Time resolution is 1 ps
-Time = 30000 ns
-Fetched Instruction = 0f32
-Decoded fields: opcode = 0000, rt_rd = 1111, rs = 0011, funct = 0010
-Register values: reg1 =     4, reg2 =    90
-Control Unit: ALUOp = 0010
-ALU Result (Final Output) =  1440
-$finish called at time : 30 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/pc-0-instruction-datapath.v" Line 104
+$finish called at time : 95 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/r_type_instruction-datapath.v" Line 116

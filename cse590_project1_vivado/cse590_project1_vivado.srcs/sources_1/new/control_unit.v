@@ -23,14 +23,15 @@
 module control_unit(
     input [3:0] opcode,
     input [3:0] funct,
-    output reg ctrl_sig,
+    output reg write_enable,
     output reg [3:0] ALUOp
     );
     
-    always @(*) 
+    always @(*)
     begin
         case(opcode)
-              4'b0000: begin ctrl_sig = 1'b1; ALUOp = funct; end
+              4'b0000: begin write_enable = 1'b1; ALUOp = funct; end
+              
         endcase
     end
   

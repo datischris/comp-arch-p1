@@ -24,9 +24,9 @@ module register_file(
     input [3:0] rs,
     input [3:0] rt_rd,
     input [3:0] write_reg,
-//       input clockrise,
+    input clock,
     input [15:0] write_data,
-    input ctrl_sig,
+    input write_enable,
     
     output reg [15:0] reg1,
     output reg [15:0] reg2
@@ -36,19 +36,23 @@ module register_file(
     
     initial
     begin
-      $readmemb("C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/register_memory.txt", RM); // load file into RM array
+      $readmemb("register_memory.txt", RM); // load file into RM array
     end
     
     always @(*) 
     begin
-        reg1 = RM[rs];
-        reg2 = RM[rt_rd];
+      reg1 = RM[rs];
+      reg2 = RM[rt_rd];
     end
     
     
-    
-    // TODO: include ctrl_sig for reg WB and adjust for clock rising edge!!
-    
-    
+    // clock rise && write_enable signal for reg WB
+    always @(posedge clock) 
+    begin 
+        if (write_enable) 
+        begin
+            RM[write_reg] <= write_data;
+        end
+    end
     
 endmodule

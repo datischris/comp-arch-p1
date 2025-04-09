@@ -21,7 +21,8 @@
 
 
 module instruction_mem(
-    input [15:0] PC_address,
+    input [15:0] pc_out,
+    input clock,
     output reg [15:0] instruction
     );
     
@@ -29,12 +30,12 @@ module instruction_mem(
     
     initial
     begin
-      $readmemb("C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/instruction_memory.txt", IM); // load file into IM array
+      $readmemb("instruction_memory.txt", IM); // load file into IM array
     end
     
-    always @(*) 
+    always @(posedge clock) 
     begin
-        instruction = IM[PC_address >> 1];
+        instruction = IM[pc_out >> 1];
     end
     
 endmodule

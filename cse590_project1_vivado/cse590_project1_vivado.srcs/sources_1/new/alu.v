@@ -32,8 +32,8 @@ module alu(
         case(ALUOp)
             4'b0000: ALURes = $signed(A) + $signed(B);
             4'b0001: ALURes = $signed(A) - $signed(B);
-            4'b0010: ALURes = B << A[3:0];
-            4'b0011: ALURes = A && B;
+            4'b0010: ALURes = {8'b0, (B[7:0] << A)};
+            4'b0011: ALURes = A & B;
         endcase
     end
     
