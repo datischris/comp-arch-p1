@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03/29/2025 07:26:46 PM
+// Create Date: 04/10/2025 02:22:27 AM
 // Design Name: 
-// Module Name: full_adder
+// Module Name: jump_adder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,21 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module full_adder(
-    input A,
-    input B,
-    input Cin,
-    output S,
-    output Cout
+module jump_adder(
+    input [11:0] address,
+    input [15:0] pc_out,
+    output reg [15:0] jump_out
     );
     
-    wire a1, a2, a3;
-  
-    xor u1(a1,A,B);   //a1 = A xor B
-    xor u2(S,a1,Cin); // S = a1 xor Cin
-      
-    and u3(a2,A,B);    // a2 = A and B
-    and u4(a3,a1,Cin); // a3 = a1 and Cin
-    or u5(Cout,a2,a3); //Cout = a2 or a3
+    always @(*) 
+    begin
+        jump_out = pc_out + (address << 1);
+    end
     
 endmodule

@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module r_type_instruction_datapath();
+module complete_datapath();
 
     // required for pc
     wire  [15:0] pc_in;                
@@ -55,18 +55,21 @@ module r_type_instruction_datapath();
          .instruction(instruction)
     );
     
-    assign opcode    = instruction[15:12];
-    assign rt_rd     = instruction[11:8];
-    assign rs        = instruction[7:4];
-    assign funct     = instruction[3:0];
+    assign opcode           = instruction[15:12];
+    assign rt_rd            = instruction[11:8];
+    assign rs               = instruction[7:4];
+    assign funct            = instruction[3:0];
+    assign address          = instruction[11:0];
     
     
     // required for control unit ALU and nearby logic
     wire write_enable, ALUSrc;
     wire read_mem, write_mem, mem_to_reg;
     wire zero_signal, beq, blt, branch_selection;
+    wire jump;
     wire [3:0]  ALUOp;
-    wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data, dm_data, branch_out;
+    wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data, dm_data;
+    wire [15:0] branch_out, muxed_branch_out, jump_out;
     
     control_unit cu_inst(
          .opcode(opcode),
@@ -77,6 +80,7 @@ module r_type_instruction_datapath();
          .mem_to_reg(mem_to_reg),
          .beq(beq),
          .blt(blt),
+         .jump(jump),
          .ALUSrc(ALUSrc),
          .ALUOp(ALUOp)
     );
@@ -123,7 +127,15 @@ module r_type_instruction_datapath();
          .zero_signal(zero_signal)
     );
     
-    pc_adder pc_add_inst_2 (
+
+    jump_adder j_add_inst(
+        .address(address),
+        .pc_out(pc_out),
+        .jump_out(jump_out)
+    );
+    
+    
+    pc_adder pc_add_inst(
         .se_immediate(se_immediate),
         .pc_out(pc_out),
         .branch_out(branch_out)
@@ -140,6 +152,13 @@ module r_type_instruction_datapath();
         .A(pc_out),
         .B(branch_out),
         .src(branch_selection),
+        .out(muxed_branch_out)
+    );
+    
+    mux_2_to_1_16bit mux_inst_4(
+        .A(muxed_branch_out),
+        .B(jump_out),
+        .src(jump),
         .out(pc_in)
     );
     
@@ -153,22 +172,21 @@ module r_type_instruction_datapath();
         .dm_data(dm_data)
     );
     
-    mux_2_to_1_16bit mux_inst_4(
+    mux_2_to_1_16bit mux_inst_5(
         .A(ALURes),
         .B(dm_data),
         .src(mem_to_reg),
         .out(wb_data)
     );
+ 
     
+    // DATAPATH START WITH INFINITE CLOCK POSEDGE -> NEGEDGE -> POSEDGE -> ...
+    // USING START VALUE TO LOAD PC 0 AND WRITING MEM TO FILE TO VIEW AFTER COMPLETION
     
     initial
     begin
           clock = 0;
           forever #5 clock = !clock;
-    end
-    
-    always @(posedge clock) begin
-        $display("Time: %0t | start: %b | pc_out: %h | pc_in: %h", $time, start, pc_out, pc_in);
     end
         
         
@@ -183,4 +201,5 @@ module r_type_instruction_datapath();
         
         $finish;
     end
+    
 endmodule

@@ -29,6 +29,7 @@ module control_unit(
     output reg mem_to_reg,
     output reg beq,
     output reg blt,
+    output reg jump,
     output reg ALUSrc,
     output reg [3:0] ALUOp
     );
@@ -43,6 +44,7 @@ module control_unit(
         mem_to_reg   = 1'b0;
         beq          = 1'b0;
         blt          = 1'b0;
+        jump         = 1'b0;
         ALUSrc       = 1'b0;
         ALUOp        = 4'b0000;
         
@@ -82,7 +84,11 @@ module control_unit(
                     blt = 1'b1;
                     ALUOp = 4'b1011;
                     ALUSrc = 1'b0;
-                   end                  
+                   end
+               4'b0110: // jmp
+                   begin
+                    jump = 1'b1;
+                   end                                 
         endcase
     end
   

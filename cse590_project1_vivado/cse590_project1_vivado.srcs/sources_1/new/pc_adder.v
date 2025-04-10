@@ -26,8 +26,6 @@ module pc_adder(
     output reg [15:0] branch_out
     );
     
-    
-    
     always @(*) 
     begin
         branch_out = pc_out + (se_immediate << 1);
