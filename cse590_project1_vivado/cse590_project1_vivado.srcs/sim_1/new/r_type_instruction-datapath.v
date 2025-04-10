@@ -64,7 +64,7 @@ module r_type_instruction_datapath();
     // required for control unit ALU and nearby logic
     wire write_enable, ALUSrc;
     wire read_mem, write_mem, mem_to_reg;
-    wire zero_signal, beq, bne, branch_selection;
+    wire zero_signal, beq, blt, branch_selection;
     wire [3:0]  ALUOp;
     wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data, dm_data, branch_out;
     
@@ -76,7 +76,7 @@ module r_type_instruction_datapath();
          .read_mem(read_mem),
          .mem_to_reg(mem_to_reg),
          .beq(beq),
-         .bne(bne),
+         .blt(blt),
          .ALUSrc(ALUSrc),
          .ALUOp(ALUOp)
     );
@@ -131,7 +131,7 @@ module r_type_instruction_datapath();
     
     branch_selector bs_inst(
          .beq(beq),
-         .bne(bne),
+         .blt(blt),
          .zero_signal(zero_signal),
          .branch_selection(branch_selection)
     );

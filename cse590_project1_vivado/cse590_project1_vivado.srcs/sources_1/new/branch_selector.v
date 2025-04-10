@@ -22,14 +22,14 @@
 
 module branch_selector(
     input beq,
-    input bne,
+    input blt,
     input zero_signal,
     output reg branch_selection
     );
     
     always @(*)
     begin
-        branch_selection = (beq && zero_signal) || (bne && ~zero_signal);
+        branch_selection = (beq && zero_signal) || (blt && ~zero_signal);
     end
     
 endmodule

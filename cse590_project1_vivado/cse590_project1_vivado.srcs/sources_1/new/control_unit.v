@@ -28,7 +28,7 @@ module control_unit(
     output reg read_mem,
     output reg mem_to_reg,
     output reg beq,
-    output reg bne,
+    output reg blt,
     output reg ALUSrc,
     output reg [3:0] ALUOp
     );
@@ -42,7 +42,7 @@ module control_unit(
         read_mem     = 1'b0;
         mem_to_reg   = 1'b0;
         beq          = 1'b0;
-        bne          = 1'b0;
+        blt          = 1'b0;
         ALUSrc       = 1'b0;
         ALUOp        = 4'b0000;
         
@@ -77,6 +77,12 @@ module control_unit(
                     ALUOp = 4'b1001;
                     ALUSrc = 1'b0;
                    end
+               4'b0101: // blt --> using custom ALUOp to for branching
+                   begin
+                    blt = 1'b1;
+                    ALUOp = 4'b1011;
+                    ALUSrc = 1'b0;
+                   end                  
         endcase
     end
   
