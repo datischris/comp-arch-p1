@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module r_type_instruction_datapath();
+module i_type_instruction_datapath();
 
     // required for pc
     reg  [15:0] pc_in;                
@@ -118,7 +118,9 @@ module r_type_instruction_datapath();
          .ALURes(ALURes)
     );
     
+    
     wire [15:0] dm_data;
+    
     
     data_memory dm_inst(
         .clock(clock),
@@ -128,6 +130,7 @@ module r_type_instruction_datapath();
         .dm_address(ALURes),
         .dm_data(dm_data)
     );
+    
     
     mux_2_to_1_16bit mux_inst_3(
         .A(ALURes),

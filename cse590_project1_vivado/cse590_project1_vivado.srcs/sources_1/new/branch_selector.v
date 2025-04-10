@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03/29/2025 10:30:44 PM
+// Create Date: 04/09/2025 11:08:52 PM
 // Design Name: 
-// Module Name: instruction_mem
+// Module Name: branch_selector
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,22 +20,16 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module instruction_mem(
-    input [15:0] pc_out,
-    input clock,
-    output reg [15:0] instruction
+module branch_selector(
+    input beq,
+    input bne,
+    input zero_signal,
+    output reg branch_selection
     );
     
-    reg [15:0] IM[0:127]; //addressing input address PC (0) to PC (254) as per 6.2.2 instruction document
-    
-    initial
+    always @(*)
     begin
-      $readmemb("instruction_memory.txt", IM); // load file into IM array
-    end
-    
-    always @(*) 
-    begin
-        instruction = IM[pc_out >> 1];
+        branch_selection = (beq && zero_signal) || (bne && ~zero_signal);
     end
     
 endmodule

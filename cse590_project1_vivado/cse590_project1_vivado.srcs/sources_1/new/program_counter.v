@@ -28,13 +28,15 @@ module program_counter(
     );
     
     always @(posedge clock)
-    if (start) 
-        begin 
-            pc_out <= 16'd0; 
-        end
-    else 
-        begin 
-            pc_out <= pc_in + 2; 
-        end
-        
+    begin
+        if (start) 
+            begin 
+                pc_out <= 16'd0; 
+            end
+        else 
+            begin 
+                pc_out <= pc_in + 2; 
+            end
+    end
+    
 endmodule

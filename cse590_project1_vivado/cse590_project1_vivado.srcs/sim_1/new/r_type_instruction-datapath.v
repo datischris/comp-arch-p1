@@ -23,8 +23,8 @@
 module r_type_instruction_datapath();
 
     // required for pc
-    reg  [15:0] pc_in;                
-    wire [15:0] pc_out;
+    wire  [15:0] pc_in;                
+    wire  [15:0] pc_out;
     
     // required for pc start + datapath signals
     reg clock, start;
@@ -62,9 +62,11 @@ module r_type_instruction_datapath();
     
     
     // required for control unit ALU and nearby logic
-    wire write_enable, ALUSrc, read_mem, write_mem, mem_to_reg;
+    wire write_enable, ALUSrc;
+    wire read_mem, write_mem, mem_to_reg;
+    wire zero_signal, beq, bne, branch_selection;
     wire [3:0]  ALUOp;
-    wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data;
+    wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data, dm_data, branch_out;
     
     control_unit cu_inst(
          .opcode(opcode),
@@ -73,6 +75,8 @@ module r_type_instruction_datapath();
          .write_mem(write_mem),
          .read_mem(read_mem),
          .mem_to_reg(mem_to_reg),
+         .beq(beq),
+         .bne(bne),
          .ALUSrc(ALUSrc),
          .ALUOp(ALUOp)
     );
@@ -115,10 +119,30 @@ module r_type_instruction_datapath();
          .A(mux_rd1),
          .B(mux_rd2),
          .ALUOp(ALUOp),
-         .ALURes(ALURes)
+         .ALURes(ALURes),
+         .zero_signal(zero_signal)
     );
     
-    wire [15:0] dm_data;
+    pc_adder pc_add_inst_2 (
+        .se_immediate(se_immediate),
+        .pc_out(pc_out),
+        .branch_out(branch_out)
+    );
+    
+    branch_selector bs_inst(
+         .beq(beq),
+         .bne(bne),
+         .zero_signal(zero_signal),
+         .branch_selection(branch_selection)
+    );
+    
+    mux_2_to_1_16bit mux_inst_3(
+        .A(pc_out),
+        .B(branch_out),
+        .src(branch_selection),
+        .out(pc_in)
+    );
+    
     
     data_memory dm_inst(
         .clock(clock),
@@ -129,7 +153,7 @@ module r_type_instruction_datapath();
         .dm_data(dm_data)
     );
     
-    mux_2_to_1_16bit mux_inst_3(
+    mux_2_to_1_16bit mux_inst_4(
         .A(ALURes),
         .B(dm_data),
         .src(mem_to_reg),
@@ -142,20 +166,20 @@ module r_type_instruction_datapath();
           clock = 0;
           forever #5 clock = !clock;
     end
+    
+    always @(posedge clock) begin
+        $display("Time: %0t | start: %b | pc_out: %h | pc_in: %h", $time, start, pc_out, pc_in);
+    end
         
         
     initial
     begin
-        start = 1; #10; start = 0; #5; pc_in = 16'd0;
+        start = 1;
+        #10;
+        start = 0;
         
-        // cycle through first 7 instructions (4 r-type, 3 i-type)
-        repeat (7) 
-        begin
-            #10; pc_in = pc_out;  // feed pc_out to the next pc_in
-        end
-        
-        #10;$writememb("final_register_state.txt", rf_inst.RM);
-        #10;$writememb("final_data_memory_state.txt", dm_inst.DM);
+        #150;$writememb("final_register_state.txt", rf_inst.RM);
+        $writememb("final_data_memory_state.txt", dm_inst.DM);
         
         $finish;
     end

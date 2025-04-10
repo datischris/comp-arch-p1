@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 03/29/2025 10:30:44 PM
+// Create Date: 04/09/2025 11:46:37 PM
 // Design Name: 
-// Module Name: instruction_mem
+// Module Name: pc_adder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,22 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module instruction_mem(
+module pc_adder(
+    input [15:0] se_immediate,
     input [15:0] pc_out,
-    input clock,
-    output reg [15:0] instruction
+    output reg [15:0] branch_out
     );
     
-    reg [15:0] IM[0:127]; //addressing input address PC (0) to PC (254) as per 6.2.2 instruction document
     
-    initial
-    begin
-      $readmemb("instruction_memory.txt", IM); // load file into IM array
-    end
     
     always @(*) 
     begin
-        instruction = IM[pc_out >> 1];
+        branch_out = pc_out + (se_immediate << 1);
     end
     
 endmodule

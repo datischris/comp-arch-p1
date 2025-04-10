@@ -1,2 +1,18 @@
 Time resolution is 1 ps
-$finish called at time : 105 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/r_type_instruction-datapath.v" Line 160
+Time: 5000 | start: 1 | pc_out: xxxx | pc_in: xxxx
+Time: 15000 | start: 0 | pc_out: 0000 | pc_in: 0000
+Time: 25000 | start: 0 | pc_out: 0002 | pc_in: 0002
+Time: 35000 | start: 0 | pc_out: 0004 | pc_in: 0004
+Time: 45000 | start: 0 | pc_out: 0006 | pc_in: 0008
+Time: 55000 | start: 0 | pc_out: 000a | pc_in: 000a
+Time: 65000 | start: 0 | pc_out: 000c | pc_in: 000c
+Time: 75000 | start: 0 | pc_out: 000e | pc_in: 000e
+Time: 85000 | start: 0 | pc_out: 0010 | pc_in: 0010
+Time: 95000 | start: 0 | pc_out: 0012 | pc_in: 0012
+Time: 105000 | start: 0 | pc_out: 0014 | pc_in: 0014
+Time: 115000 | start: 0 | pc_out: 0016 | pc_in: 0016
+Time: 125000 | start: 0 | pc_out: 0018 | pc_in: 0018
+Time: 135000 | start: 0 | pc_out: 001a | pc_in: 001a
+Time: 145000 | start: 0 | pc_out: 001c | pc_in: 001c
+Time: 155000 | start: 0 | pc_out: 001e | pc_in: 001e
+$finish called at time : 160 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/r_type_instruction-datapath.v" Line 184

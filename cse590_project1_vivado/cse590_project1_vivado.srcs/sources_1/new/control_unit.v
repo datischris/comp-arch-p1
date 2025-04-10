@@ -12,7 +12,7 @@
 // Description: 
 // 
 // Dependencies: 
-// 
+//  
 // Revision:
 // Revision 0.01 - File Created
 // Additional Comments:
@@ -27,6 +27,8 @@ module control_unit(
     output reg write_mem,
     output reg read_mem,
     output reg mem_to_reg,
+    output reg beq,
+    output reg bne,
     output reg ALUSrc,
     output reg [3:0] ALUOp
     );
@@ -39,6 +41,8 @@ module control_unit(
         write_mem    = 1'b0;
         read_mem     = 1'b0;
         mem_to_reg   = 1'b0;
+        beq          = 1'b0;
+        bne          = 1'b0;
         ALUSrc       = 1'b0;
         ALUOp        = 4'b0000;
         
@@ -54,7 +58,6 @@ module control_unit(
                     write_enable = 1'b1;
                     mem_to_reg = 1'b0;
                     ALUSrc = 1'b1;
-                    ALUOp = 0000;
                    end
               4'b0001: // lw
                    begin
@@ -62,15 +65,18 @@ module control_unit(
                     read_mem = 1'b1;
                     mem_to_reg = 1'b1;
                     ALUSrc = 1'b1;
-                    ALUOp = 0000;
                    end
               4'b0010: // sw
                    begin
                     write_mem = 1'b1;
                     ALUSrc = 1'b1;
-                    ALUOp = 0000;
-                   end               
-              
+                   end
+              4'b0100: // beq --> using custom ALUOp to for branching
+                   begin
+                    beq = 1'b1;
+                    ALUOp = 4'b1001;
+                    ALUSrc = 1'b0;
+                   end
         endcase
     end
   
