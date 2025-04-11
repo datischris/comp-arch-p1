@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/29/2025 08:26:45 PM
-// Design Name: 
-// Module Name: program_counter
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module program_counter(
     input [15:0] pc_in,
@@ -29,7 +9,7 @@ module program_counter(
     
     always @(posedge clock)
     begin
-        if (start) 
+        if (start)
             begin 
                 pc_out <= 16'd0; 
             end

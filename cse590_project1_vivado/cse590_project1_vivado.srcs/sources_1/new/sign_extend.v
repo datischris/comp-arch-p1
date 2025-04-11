@@ -27,7 +27,7 @@ module sign_extend(
     
     always @(*)
     begin
-        se_immediate = {{12{immediate[3]}},immediate};
+        se_immediate = {{12{immediate[3]}}, immediate};
     end
     
 endmodule

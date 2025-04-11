@@ -43,14 +43,14 @@ module data_memory(
         DM[7]  = 8'd0;
         DM[8]  = 8'd0;
         DM[9]  = 8'd0;
-        DM[10] = 8'd0;      // using this for lw
-        DM[11] = 8'd10;     // using this for lw
+        DM[10] = 8'd0;      // using this for lw example
+        DM[11] = 8'd10;     // using this for lw example
         DM[12] = 8'd0;
         DM[13] = 8'd0;
         DM[14] = 8'd0;
         DM[15] = 8'd0;
-        DM[16] = 8'd0;      // using this for sw
-        DM[17] = 8'd0;      // using this for sw
+        DM[16] = 8'd0;      // using this for sw example
+        DM[17] = 8'd0;      // using this for sw example
         DM[18] = 8'd0;
         DM[19] = 8'd0;
         DM[20] = 8'd0;
@@ -69,10 +69,12 @@ module data_memory(
     
     always @(*)
     begin
+        // setting so we dont carry over old signals
         dm_data = 16'd0;
+        
         if (read_mem)
         begin
-            dm_data <= {DM[dm_address], DM[dm_address + 1]};
+            dm_data <= {DM[dm_address], DM[dm_address + 1]}; // {MSB, LSB}
         end
     end
     
@@ -80,8 +82,8 @@ module data_memory(
     begin
         if (write_mem)
         begin
-            DM[dm_address] <= write_data[15:8]; // MSB
-            DM[dm_address + 1] <= write_data[7:0]; //LSB
+            DM[dm_address] <= write_data[15:8];     // MSB
+            DM[dm_address + 1] <= write_data[7:0];  // LSB
         end
     end
     

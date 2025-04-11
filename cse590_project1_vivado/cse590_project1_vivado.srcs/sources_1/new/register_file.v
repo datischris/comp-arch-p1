@@ -28,11 +28,12 @@ module register_file(
     input [15:0] write_data,
     input write_enable,
     
-    output reg [15:0] rd1, // rt_rd
-    output reg [15:0] rd2  // rs
+    output reg [15:0] rd1, // rt_rd location
+    output reg [15:0] rd2  // rs location
     );
     
-    reg [15:0] RM[0:15]; //addressing $s1 (line 1 -> 0th index) to $s15 (line 16 -> 15th index) in register array as per 5.3 instruction document
+    //addressing $s1 (line 1 -> 0th index) to $s15 (line 16 -> 15th index) in register array as per 5.3 instruction document
+    reg [15:0] RM[0:15]; 
     
     initial
     begin
@@ -45,8 +46,7 @@ module register_file(
       rd2 = RM[rs];
     end
     
-    
-    // clock rise && write_enable signal for reg WB
+    // clock rise + write_enable signal for reg WB
     always @(posedge clock) 
     begin 
         if (write_enable) 
