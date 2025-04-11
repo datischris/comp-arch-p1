@@ -1,9 +1,14 @@
 `timescale 1ns / 1ps
 
-module complete_datapath();
+module complete_datapath(
+    input clock,
+    input start,
+    output [15:0] rd1_led,
+    output [15:0] wb_led
+);
 
     // required for pc
-    reg clock, start;
+//    reg clock, start;
     wire  [15:0] pc_in;                
     wire  [15:0] pc_out;
     
@@ -45,7 +50,10 @@ module complete_datapath();
 
     register_file rf_inst(.rt_rd(rt_rd),.rs(rs),.write_reg(rt_rd),.clock(clock),.write_data(wb_data),
                           .write_enable(write_enable),.rd1(rd1),.rd2(rd2));
-    
+                          
+    assign rd1_val  = rd1;
+    assign wb_val   = wb_data;
+        
     sign_extend se_inst(.immediate(funct),.se_immediate(se_immediate));
     
     // selecting rd1 and rd2 (in case for addi)
@@ -64,31 +72,13 @@ module complete_datapath();
     
     mux_2_to_1_16bit mux_inst_4(.A(muxed_branch_out),.B(jump_out),.src(jump),.out(pc_in));
     
-    data_memory dm_inst(.clock(clock),.write_data(rd1),.write_mem(write_mem),.read_mem(read_mem),
+    data_memory dm_inst(.clock(clock),.write_data(rd1),.write_mem(xwrite_mem),.read_mem(read_mem),
                         .dm_address(ALURes),.dm_data(dm_data));
     
     mux_2_to_1_16bit mux_inst_5(.A(ALURes),.B(dm_data),.src(mem_to_reg),.out(wb_data));
     
-    // INFINITE CLOCK: CYCLING POSEDGE -> NEGEDGE -> POSEDGE -> ...
-    initial
-    begin
-          clock = 0;
-          forever #5 clock = !clock;
-    end
-    
-    // USING START VALUE TO LOAD PC 0 AND WRITING MEM TO FILE TO VIEW AFTER 150ps COMPLETION
-    initial
-    begin
-        start = 1;
-        #10;
-        start = 0;
-        
-        #150;
-        
-        $writememb("final_register_state.txt", rf_inst.RM);
-        $writememb("final_data_memory_state.txt", dm_inst.DM);
-        
-        $finish;
-    end
+    // FOR FPGA BOARD
+    assign rd1_led = rd1;
+    assign wb_led  = wb_data;
     
 endmodule
