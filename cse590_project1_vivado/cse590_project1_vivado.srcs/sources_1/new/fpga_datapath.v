@@ -36,4 +36,10 @@ module fpga_datapath(
     
     assign leds = clock ? rd_before_write : rd_after_write;
     
+//    initial
+//    begin
+//        #150;
+//        $finish;
+//    end
+    
 endmodule

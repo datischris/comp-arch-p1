@@ -57,7 +57,6 @@ if {$::dispatch::connected} {
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 3
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -82,6 +81,7 @@ read_verilog -library xil_defaultlib {
   C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/jump_adder.v
   C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/mux_2_to_1_16bit.v
   C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/pc_adder.v
+  C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/program_count_adder.v
   C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/program_counter.v
   C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/register_file.v
   C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/sign_extend.v

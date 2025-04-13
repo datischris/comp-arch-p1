@@ -20,7 +20,7 @@ module program_counter(
             end
         else 
             begin 
-                pc_out <= pc_in + 2; 
+                pc_out <= pc_in; 
             end
     end
     

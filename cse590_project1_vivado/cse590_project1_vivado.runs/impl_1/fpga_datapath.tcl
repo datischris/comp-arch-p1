@@ -106,7 +106,6 @@ set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
   set_param chipscope.maxJobs 3
-  set_param xicom.use_bs_reader 1
   set_param runs.launchOptions { -jobs 12  }
   open_checkpoint fpga_datapath_routed.dcp
   set_property webtalk.parent_dir C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.cache/wt [current_project]

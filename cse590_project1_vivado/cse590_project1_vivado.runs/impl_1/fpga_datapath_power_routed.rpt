@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date             : Fri Apr 11 19:15:01 2025
+| Date             : Sat Apr 12 23:04:20 2025
 | Host             : CHRIS-LAPTOP running 64-bit major release  (build 9200)
 | Command          : report_power -file fpga_datapath_power_routed.rpt -pb fpga_datapath_power_summary_routed.pb -rpx fpga_datapath_power_routed.rpx
 | Design           : fpga_datapath
@@ -29,20 +29,20 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 51.556 (Junction temp exceeded!) |
-| Design Power Budget (W)  | Unspecified*                     |
-| Power Budget Margin (W)  | NA                               |
-| Dynamic (W)              | 51.070                           |
-| Device Static (W)        | 0.486                            |
-| Effective TJA (C/W)      | 5.0                              |
-| Max Ambient (C)          | 0.0                              |
-| Junction Temperature (C) | 125.0                            |
-| Confidence Level         | Low                              |
-| Setting File             | ---                              |
-| Simulation Activity File | ---                              |
-| Design Nets Matched      | NA                               |
-+--------------------------+----------------------------------+
++--------------------------+-----------------------------------+
+| Total On-Chip Power (W)  | 141.929 (Junction temp exceeded!) |
+| Design Power Budget (W)  | Unspecified*                      |
+| Power Budget Margin (W)  | NA                                |
+| Dynamic (W)              | 141.443                           |
+| Device Static (W)        | 0.486                             |
+| Effective TJA (C/W)      | 5.0                               |
+| Max Ambient (C)          | 0.0                               |
+| Junction Temperature (C) | 125.0                             |
+| Confidence Level         | Low                               |
+| Setting File             | ---                               |
+| Simulation Activity File | ---                               |
+| Design Nets Matched      | NA                                |
++--------------------------+-----------------------------------+
 * Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
 
 
@@ -52,17 +52,18 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Slice Logic              |     2.042 |      198 |       --- |             --- |
-|   LUT as Logic           |     1.575 |      128 |     20800 |            0.62 |
-|   LUT as Distributed RAM |     0.371 |       16 |      9600 |            0.17 |
-|   CARRY4                 |     0.084 |       12 |      8150 |            0.15 |
-|   Register               |     0.007 |        9 |     41600 |            0.02 |
+| Slice Logic              |    44.463 |     6718 |       --- |             --- |
+|   LUT as Logic           |    42.464 |     3117 |     20800 |           14.99 |
+|   F7/F8 Muxes            |     1.631 |      816 |     32600 |            2.50 |
+|   LUT as Distributed RAM |     0.249 |       16 |      9600 |            0.17 |
+|   CARRY4                 |     0.105 |       21 |      8150 |            0.26 |
+|   Register               |     0.008 |     2058 |     41600 |            4.95 |
 |   BUFG                   |     0.006 |        1 |        32 |            3.13 |
-|   Others                 |     0.000 |        7 |       --- |             --- |
-| Signals                  |     2.398 |      193 |       --- |             --- |
-| I/O                      |    46.630 |       28 |       106 |           26.42 |
+|   Others                 |     0.000 |       10 |       --- |             --- |
+| Signals                  |    50.371 |     3529 |       --- |             --- |
+| I/O                      |    46.608 |       17 |       106 |           16.04 |
 | Static Power             |     0.486 |          |           |                 |
-| Total                    |    51.556 |          |           |                 |
+| Total                    |   141.929 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     4.785 |       4.444 |      0.341 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     1.762 |       1.709 |      0.053 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |    13.198 |      13.197 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |    95.179 |      94.839 |      0.341 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     1.761 |       1.708 |      0.053 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |    13.192 |      13.191 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -139,27 +140,30 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| fpga_datapath           |    51.070 |
-|   datapath_inst         |     4.414 |
-|     alu_inst            |     0.260 |
-|     pc_inst             |     0.513 |
-|     rf_inst             |     3.641 |
-|       RM_reg_0_15_0_0   |     0.103 |
-|       RM_reg_0_15_10_10 |     0.055 |
-|       RM_reg_0_15_11_11 |     0.053 |
-|       RM_reg_0_15_12_12 |     0.053 |
-|       RM_reg_0_15_13_13 |     0.063 |
-|       RM_reg_0_15_14_14 |     0.058 |
-|       RM_reg_0_15_15_15 |     0.043 |
-|       RM_reg_0_15_1_1   |     0.095 |
-|       RM_reg_0_15_2_2   |     0.094 |
-|       RM_reg_0_15_3_3   |     0.095 |
-|       RM_reg_0_15_4_4   |     0.065 |
-|       RM_reg_0_15_5_5   |     0.059 |
-|       RM_reg_0_15_6_6   |     0.054 |
-|       RM_reg_0_15_7_7   |     0.063 |
-|       RM_reg_0_15_8_8   |     0.062 |
-|       RM_reg_0_15_9_9   |     0.054 |
+| fpga_datapath           |   141.443 |
+|   datapath_inst         |    94.659 |
+|     alu_inst            |     0.392 |
+|     dm_inst             |    19.260 |
+|     pc_add_inst         |     0.050 |
+|     pc_adder_inst       |     0.079 |
+|     pc_inst             |    64.822 |
+|     rf_inst             |    10.056 |
+|       RM_reg_0_15_0_0   |     0.483 |
+|       RM_reg_0_15_10_10 |     0.633 |
+|       RM_reg_0_15_11_11 |     0.603 |
+|       RM_reg_0_15_12_12 |     0.604 |
+|       RM_reg_0_15_13_13 |     0.563 |
+|       RM_reg_0_15_14_14 |     0.597 |
+|       RM_reg_0_15_15_15 |     0.589 |
+|       RM_reg_0_15_1_1   |     0.476 |
+|       RM_reg_0_15_2_2   |     0.447 |
+|       RM_reg_0_15_3_3   |     0.538 |
+|       RM_reg_0_15_4_4   |     0.453 |
+|       RM_reg_0_15_5_5   |     0.518 |
+|       RM_reg_0_15_6_6   |     0.440 |
+|       RM_reg_0_15_7_7   |     0.497 |
+|       RM_reg_0_15_8_8   |     0.587 |
+|       RM_reg_0_15_9_9   |     0.640 |
 +-------------------------+-----------+
 
 

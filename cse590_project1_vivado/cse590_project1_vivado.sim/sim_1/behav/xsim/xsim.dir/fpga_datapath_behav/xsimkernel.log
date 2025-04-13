@@ -1,7 +1,7 @@
-Running: xsim.dir/fpga_datapath_behav/xsimk.exe -simmode gui -wdb fpga_datapath_behav.wdb -simrunnum 0 -socket 65454
+Running: xsim.dir/fpga_datapath_behav/xsimk.exe -simmode gui -wdb fpga_datapath_behav.wdb -simrunnum 0 -socket 61501
 Design successfully loaded
-Design Loading Memory Usage: 27388 KB (Peak: 27388 KB)
-Design Loading CPU Usage: 30 ms
+Design Loading Memory Usage: 27368 KB (Peak: 27368 KB)
+Design Loading CPU Usage: 312 ms
 Simulation completed
-Simulation Memory Usage: 28444 KB (Peak: 28444 KB)
-Simulation CPU Usage: 30 ms
+Simulation Memory Usage: 28428 KB (Peak: 28428 KB)
+Simulation CPU Usage: 343 ms

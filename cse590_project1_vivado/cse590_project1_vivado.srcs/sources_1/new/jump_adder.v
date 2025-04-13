@@ -28,7 +28,7 @@ module jump_adder(
     
     always @(*) 
     begin
-        jump_out = pc_out + (address << 1);
+        jump_out = pc_out + ({{4{address[11]}}, address} << 1);
     end
     
 endmodule

@@ -33,8 +33,8 @@ module data_memory(
     
     initial
     begin
-        DM[0]  = 8'd0;
-        DM[1]  = 8'd0;
+        DM[0]  = 8'd0;      // using this for sw example
+        DM[1]  = 8'd0;      // using this for sw example
         DM[2]  = 8'd0;
         DM[3]  = 8'd0;
         DM[4]  = 8'd0;
@@ -44,13 +44,13 @@ module data_memory(
         DM[8]  = 8'd0;
         DM[9]  = 8'd0;
         DM[10] = 8'd0;      // using this for lw example
-        DM[11] = 8'd10;     // using this for lw example
+        DM[11] = 8'd255;    // using this for lw example
         DM[12] = 8'd0;
         DM[13] = 8'd0;
         DM[14] = 8'd0;
         DM[15] = 8'd0;
-        DM[16] = 8'd0;      // using this for sw example
-        DM[17] = 8'd0;      // using this for sw example
+        DM[16] = 8'd0;      
+        DM[17] = 8'd0;
         DM[18] = 8'd0;
         DM[19] = 8'd0;
         DM[20] = 8'd0;
