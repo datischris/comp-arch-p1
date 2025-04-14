@@ -42,9 +42,8 @@ module alu(
             4'b0010: ALURes = A << B;
             4'b0011: ALURes = A & B;
             
-            // custom ALUOp controls for branching
+            // custom ALUOp controls for beq and bne
             4'b1001: zero_signal = ($signed(B) == $signed(A));
-            4'b1011: zero_signal = ($signed(B) < $signed(A));
         endcase
 
     end

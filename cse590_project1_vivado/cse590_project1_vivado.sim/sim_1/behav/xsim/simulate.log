@@ -1,2 +1,2 @@
 Time resolution is 1 ps
-$finish called at time : 150 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sources_1/new/fpga_datapath.v" Line 42
+$finish called at time : 160 ns : File "C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.srcs/sim_1/new/sim_datapath.v" Line 107

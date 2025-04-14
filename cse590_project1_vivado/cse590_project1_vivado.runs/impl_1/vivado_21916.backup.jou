@@ -3,8 +3,8 @@
 # SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
 # IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
 # SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
-# Start of session at: Sat Apr 12 23:03:29 2025
-# Process ID         : 20524
+# Start of session at: Sun Apr 13 10:45:57 2025
+# Process ID         : 21916
 # Current directory  : C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.runs/impl_1
 # Command line       : vivado.exe -log fpga_datapath.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source fpga_datapath.tcl -notrace
 # Log file           : C:/Users/chris/cse590_project1_vivado/cse590_project1_vivado.runs/impl_1/fpga_datapath.vdi
@@ -17,8 +17,8 @@
 # CPU Physical cores : 10
 # CPU Logical cores  : 12
 # Host memory        : 34175 MB
-# Swap memory        : 7174 MB
-# Total Virtual      : 41350 MB
-# Available Virtual  : 8242 MB
+# Swap memory        : 6032 MB
+# Total Virtual      : 40207 MB
+# Available Virtual  : 7624 MB
 #-----------------------------------------------------------
 source fpga_datapath.tcl -notrace

@@ -53,14 +53,12 @@ module control_unit(
               4'b0000: // r-type
                   begin 
                     write_enable = 1'b1;
-                    mem_to_reg = 1'b0;
                     ALUOp = funct;
                   end
               
               4'b0011: // addi
                    begin
                     write_enable = 1'b1;
-                    mem_to_reg = 1'b0;
                     ALUSrc = 1'b1;
                    end
               
@@ -78,16 +76,16 @@ module control_unit(
                     ALUSrc = 1'b1;
                    end
               
-              4'b0100: // beq --> using custom ALUOp for branching
+              4'b0100: // beq --> using custom ALUOp for zero signal
                    begin
                     beq = 1'b1;
                     ALUOp = 4'b1001;
                    end
                
-               4'b0101: // blt --> using custom ALUOp for branching
+               4'b0101: // bne --> using custom ALUOp for zero signal
                    begin
                     blt = 1'b1;
-                    ALUOp = 4'b1011;
+                    ALUOp = 4'b1001;
                    end
                
                4'b0110: // jmp
