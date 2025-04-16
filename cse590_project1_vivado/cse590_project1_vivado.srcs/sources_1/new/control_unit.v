@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 03/30/2025 02:29:18 PM
-// Design Name: 
-// Module Name: control_unit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-//  
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module control_unit(
     input [3:0] opcode,
@@ -28,7 +8,7 @@ module control_unit(
     output reg read_mem,
     output reg mem_to_reg,
     output reg beq,
-    output reg blt,
+    output reg bne,
     output reg jump,
     output reg ALUSrc,
     output reg [3:0] ALUOp
@@ -43,7 +23,7 @@ module control_unit(
         read_mem     = 1'b0;
         mem_to_reg   = 1'b0;
         beq          = 1'b0;
-        blt          = 1'b0;
+        bne          = 1'b0;
         jump         = 1'b0;
         ALUSrc       = 1'b0;
         ALUOp        = 4'b0000;
@@ -84,7 +64,7 @@ module control_unit(
                
                4'b0101: // bne --> using custom ALUOp for zero signal
                    begin
-                    blt = 1'b1;
+                    bne = 1'b1;
                     ALUOp = 4'b1001;
                    end
                

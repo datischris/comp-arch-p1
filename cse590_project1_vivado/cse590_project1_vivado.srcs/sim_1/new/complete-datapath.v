@@ -29,7 +29,7 @@ module complete_datapath(
     // required for control unit ALU and nearby logic
     wire write_enable, ALUSrc;
     wire read_mem, write_mem, mem_to_reg;
-    wire zero_signal, beq, blt, branch_selection;
+    wire zero_signal, beq, bne, branch_selection;
     wire jump;
     wire [3:0]  ALUOp;
     wire [15:0] rd1, rd2, se_immediate, mux_rd1, mux_rd2, ALURes, wb_data, dm_data;
@@ -48,7 +48,7 @@ module complete_datapath(
     assign address  = instruction[11:0];
     
     control_unit cu_inst(.opcode(opcode),.funct(funct),.write_enable(write_enable),.write_mem(write_mem),
-                         .read_mem(read_mem),.mem_to_reg(mem_to_reg),.beq(beq),.blt(blt),.jump(jump),
+                         .read_mem(read_mem),.mem_to_reg(mem_to_reg),.beq(beq),.bne(bne),.jump(jump),
                          .ALUSrc(ALUSrc),.ALUOp(ALUOp));
 
     register_file rf_inst(.rt_rd(rt_rd),.rs(rs),.write_reg(rt_rd),.clock(clock),.write_data(wb_data),
@@ -66,7 +66,7 @@ module complete_datapath(
     
     pc_adder pc_add_inst(.se_immediate(se_immediate),.pc_out(pc_next),.branch_out(branch_out));
     
-    branch_selector bs_inst(.beq(beq),.blt(blt),.zero_signal(zero_signal),.branch_selection(branch_selection));
+    branch_selector bs_inst(.beq(beq),.bne(bne),.zero_signal(zero_signal),.branch_selection(branch_selection));
     
     mux_2_to_1_16bit mux_inst_3(.A(pc_next),.B(branch_out),.src(branch_selection),.out(muxed_branch_out));
     

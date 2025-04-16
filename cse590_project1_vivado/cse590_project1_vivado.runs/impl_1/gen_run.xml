@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1744555547">
+<GenRun Id="impl_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1744775956">
+  <File Type="PA-TCL" Name="fpga_datapath.tcl"/>
   <File Type="REPORTS-TCL" Name="fpga_datapath_reports.tcl"/>
-  <File Type="ROUTE-PWR-SUM" Name="fpga_datapath_power_summary_routed.pb"/>
-  <File Type="BITSTR-MMI" Name="fpga_datapath.mmi"/>
+  <File Type="INIT-TIMING" Name="fpga_datapath_timing_summary_init.rpt"/>
+  <File Type="OPT-DCP" Name="fpga_datapath_opt.dcp"/>
   <File Type="OPT-DRC" Name="fpga_datapath_drc_opted.rpt"/>
-  <File Type="BG-DRC" Name="fpga_datapath.drc"/>
-  <File Type="ROUTE-STATUS-PB" Name="fpga_datapath_route_status.pb"/>
-  <File Type="BG-BGN" Name="fpga_datapath.bgn"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="fpga_datapath_methodology_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="fpga_datapath.hwdef"/>
+  <File Type="OPT-TIMING" Name="fpga_datapath_timing_summary_opted.rpt"/>
+  <File Type="OPT-RQA-PB" Name="fpga_datapath_rqa_opted.pb"/>
+  <File Type="PWROPT-DCP" Name="fpga_datapath_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="fpga_datapath_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="fpga_datapath_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="fpga_datapath_placed.dcp"/>
+  <File Type="PLACE-IO" Name="fpga_datapath_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="fpga_datapath_clock_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL" Name="fpga_datapath_utilization_placed.rpt"/>
   <File Type="PLACE-UTIL-PB" Name="fpga_datapath_utilization_placed.pb"/>
-  <File Type="PLACE-IO" Name="fpga_datapath_io_placed.rpt"/>
-  <File Type="BG-BIN" Name="fpga_datapath.bin"/>
   <File Type="PLACE-CTRL" Name="fpga_datapath_control_sets_placed.rpt"/>
-  <File Type="ROUTE-PWR-RPX" Name="fpga_datapath_power_routed.rpx"/>
+  <File Type="PLACE-SIMILARITY" Name="fpga_datapath_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="fpga_datapath_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-TIMING" Name="fpga_datapath_timing_summary_placed.rpt"/>
+  <File Type="PLACE-RQA-PB" Name="fpga_datapath_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="fpga_datapath_postplace_pwropt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="fpga_datapath_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="fpga_datapath_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="fpga_datapath_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-TIMING" Name="fpga_datapath_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="fpga_datapath_routed_error.dcp"/>
   <File Type="ROUTE-DCP" Name="fpga_datapath_routed.dcp"/>
-  <File Type="BITSTR-MSK" Name="fpga_datapath.msk"/>
-  <File Type="BITSTR-RBT" Name="fpga_datapath.rbt"/>
-  <File Type="ROUTE-TIMINGSUMMARY" Name="fpga_datapath_timing_summary_routed.rpt"/>
-  <File Type="ROUTE-TIMING-RPX" Name="fpga_datapath_timing_summary_routed.rpx"/>
-  <File Type="ROUTE-STATUS" Name="fpga_datapath_route_status.rpt"/>
-  <File Type="PA-TCL" Name="fpga_datapath.tcl"/>
-  <File Type="ROUTE-PWR" Name="fpga_datapath_power_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="fpga_datapath_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="fpga_datapath_drc_routed.rpt"/>
-  <File Type="ROUTE-DRC-RPX" Name="fpga_datapath_drc_routed.rpx"/>
   <File Type="ROUTE-DRC-PB" Name="fpga_datapath_drc_routed.pb"/>
-  <File Type="BITSTR-SYSDEF" Name="fpga_datapath.sysdef"/>
+  <File Type="ROUTE-DRC-RPX" Name="fpga_datapath_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="fpga_datapath_methodology_drc_routed.rpt"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="fpga_datapath_methodology_drc_routed.rpx"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="fpga_datapath.ltx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="fpga_datapath_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="fpga_datapath_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="fpga_datapath_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="fpga_datapath_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="fpga_datapath_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="fpga_datapath_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="fpga_datapath_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="fpga_datapath_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="fpga_datapath_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="fpga_datapath_incremental_reuse_routed.rpt"/>
-  <File Type="RDI-RDI" Name="fpga_datapath.vdi"/>
   <File Type="ROUTE-CLK" Name="fpga_datapath_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="fpga_datapath_bus_skew_routed.rpt"/>
-  <File Type="ROUTE-BUS-SKEW-RPX" Name="fpga_datapath_bus_skew_routed.rpx"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="fpga_datapath_bus_skew_routed.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="fpga_datapath_timing_summary_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="fpga_datapath_timing_summary_postroute_physopted.rpx"/>
-  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="fpga_datapath_timing_summary_postroute_physopted.pb"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="fpga_datapath_bus_skew_postroute_physopted.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="fpga_datapath_bus_skew_postroute_physopted.rpx"/>
-  <File Type="BG-BIT" Name="fpga_datapath.bit"/>
-  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="fpga_datapath_bus_skew_postroute_physopted.pb"/>
-  <File Type="BITSTR-NKY" Name="fpga_datapath.nky"/>
-  <File Type="BITSTR-BMM" Name="fpga_datapath_bd.bmm"/>
-  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="OPT-HWDEF" Name="fpga_datapath.hwdef"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="fpga_datapath_incremental_reuse_pre_placed.rpt"/>
-  <File Type="ROUTE-ERROR-DCP" Name="fpga_datapath_routed_error.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="fpga_datapath_routed_bb.dcp"/>
-  <File Type="ROUTE-TIMING-PB" Name="fpga_datapath_timing_summary_routed.pb"/>
-  <File Type="OPT-DCP" Name="fpga_datapath_opt.dcp"/>
-  <File Type="PLACE-DCP" Name="fpga_datapath_placed.dcp"/>
-  <File Type="PWROPT-DCP" Name="fpga_datapath_pwropt.dcp"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="fpga_datapath_postplace_pwropt.dcp"/>
-  <File Type="PHYSOPT-DCP" Name="fpga_datapath_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="fpga_datapath_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-RQS-PB" Name="fpga_datapath_rqs_routed.pb"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="fpga_datapath_postroute_physopt.dcp"/>
   <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="fpga_datapath_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="fpga_datapath_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="fpga_datapath_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="fpga_datapath_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="fpga_datapath_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="fpga_datapath_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="fpga_datapath_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BG-BIT" Name="fpga_datapath.bit"/>
+  <File Type="BG-BIN" Name="fpga_datapath.bin"/>
+  <File Type="BITSTR-MSK" Name="fpga_datapath.msk"/>
+  <File Type="BITSTR-RBT" Name="fpga_datapath.rbt"/>
+  <File Type="BITSTR-NKY" Name="fpga_datapath.nky"/>
+  <File Type="BITSTR-BMM" Name="fpga_datapath_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="fpga_datapath.mmi"/>
   <File Type="PDI-FILE" Name="fpga_datapath.pdi"/>
   <File Type="BOOT-PDI-FILE" Name="fpga_datapath_boot.pdi"/>
   <File Type="PL-PDI-FILE" Name="fpga_datapath_pld.pdi"/>
@@ -66,6 +73,13 @@
   <File Type="RNPI_FILE" Name="fpga_datapath.rnpi"/>
   <File Type="NPI_FILE" Name="fpga_datapath.npi"/>
   <File Type="RBD_FILE" Name="fpga_datapath.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="fpga_datapath.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="fpga_datapath.sysdef"/>
+  <File Type="BG-BGN" Name="fpga_datapath.bgn"/>
+  <File Type="BG-DRC" Name="fpga_datapath.drc"/>
+  <File Type="RDI-RDI" Name="fpga_datapath.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="ROUTE-RQS" Name="fpga_datapath_routed.rqs"/>
   <File Type="POSTROUTE-PHYSOPT-RQS" Name="fpga_datapath_postroute_physopted.rqs"/>
   <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
@@ -215,6 +229,5 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
 </GenRun>

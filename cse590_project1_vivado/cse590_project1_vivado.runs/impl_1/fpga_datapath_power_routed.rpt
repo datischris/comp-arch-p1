@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date             : Sun Apr 13 10:49:06 2025
+| Date             : Wed Apr 16 00:00:16 2025
 | Host             : CHRIS-LAPTOP running 64-bit major release  (build 9200)
 | Command          : report_power -file fpga_datapath_power_routed.rpt -pb fpga_datapath_power_summary_routed.pb -rpx fpga_datapath_power_routed.rpx
 | Design           : fpga_datapath
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+-----------------------------------+
-| Total On-Chip Power (W)  | 141.929 (Junction temp exceeded!) |
+| Total On-Chip Power (W)  | 144.313 (Junction temp exceeded!) |
 | Design Power Budget (W)  | Unspecified*                      |
 | Power Budget Margin (W)  | NA                                |
-| Dynamic (W)              | 141.443                           |
+| Dynamic (W)              | 143.827                           |
 | Device Static (W)        | 0.486                             |
 | Effective TJA (C/W)      | 5.0                               |
 | Max Ambient (C)          | 0.0                               |
@@ -52,18 +52,18 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Slice Logic              |    44.463 |     6718 |       --- |             --- |
-|   LUT as Logic           |    42.464 |     3117 |     20800 |           14.99 |
-|   F7/F8 Muxes            |     1.631 |      816 |     32600 |            2.50 |
-|   LUT as Distributed RAM |     0.249 |       16 |      9600 |            0.17 |
-|   CARRY4                 |     0.105 |       21 |      8150 |            0.26 |
-|   Register               |     0.008 |     2058 |     41600 |            4.95 |
+| Slice Logic              |    45.623 |     6698 |       --- |             --- |
+|   LUT as Logic           |    43.573 |     3097 |     20800 |           14.89 |
+|   F7/F8 Muxes            |     1.693 |      816 |     32600 |            2.50 |
+|   LUT as Distributed RAM |     0.251 |       16 |      9600 |            0.17 |
+|   CARRY4                 |     0.093 |       16 |      8150 |            0.20 |
+|   Register               |     0.007 |     2057 |     41600 |            4.94 |
 |   BUFG                   |     0.006 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |       10 |       --- |             --- |
-| Signals                  |    50.371 |     3529 |       --- |             --- |
-| I/O                      |    46.608 |       17 |       106 |           16.04 |
+| Signals                  |    51.634 |     3515 |       --- |             --- |
+| I/O                      |    46.569 |       17 |       106 |           16.04 |
 | Static Power             |     0.486 |          |           |                 |
-| Total                    |   141.929 |          |           |                 |
+| Total                    |   144.313 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |    95.179 |      94.839 |      0.341 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     1.761 |       1.708 |      0.053 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |    13.192 |      13.191 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |    97.602 |      97.262 |      0.341 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     1.760 |       1.706 |      0.053 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |    13.181 |      13.180 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -140,30 +140,30 @@ Table of Contents
 +-------------------------+-----------+
 | Name                    | Power (W) |
 +-------------------------+-----------+
-| fpga_datapath           |   141.443 |
-|   datapath_inst         |    94.659 |
-|     alu_inst            |     0.392 |
-|     dm_inst             |    19.260 |
-|     pc_add_inst         |     0.050 |
-|     pc_adder_inst       |     0.079 |
-|     pc_inst             |    64.822 |
-|     rf_inst             |    10.056 |
-|       RM_reg_0_15_0_0   |     0.483 |
-|       RM_reg_0_15_10_10 |     0.633 |
-|       RM_reg_0_15_11_11 |     0.603 |
-|       RM_reg_0_15_12_12 |     0.604 |
-|       RM_reg_0_15_13_13 |     0.563 |
-|       RM_reg_0_15_14_14 |     0.597 |
-|       RM_reg_0_15_15_15 |     0.589 |
-|       RM_reg_0_15_1_1   |     0.476 |
-|       RM_reg_0_15_2_2   |     0.447 |
-|       RM_reg_0_15_3_3   |     0.538 |
-|       RM_reg_0_15_4_4   |     0.453 |
-|       RM_reg_0_15_5_5   |     0.518 |
-|       RM_reg_0_15_6_6   |     0.440 |
-|       RM_reg_0_15_7_7   |     0.497 |
-|       RM_reg_0_15_8_8   |     0.587 |
-|       RM_reg_0_15_9_9   |     0.640 |
+| fpga_datapath           |   143.827 |
+|   datapath_inst         |    97.072 |
+|     alu_inst            |     0.310 |
+|     dm_inst             |    19.744 |
+|     pc_add_inst         |     0.038 |
+|     pc_adder_inst       |     0.078 |
+|     pc_inst             |    67.353 |
+|     rf_inst             |     9.549 |
+|       RM_reg_0_15_0_0   |     0.477 |
+|       RM_reg_0_15_10_10 |     0.589 |
+|       RM_reg_0_15_11_11 |     0.589 |
+|       RM_reg_0_15_12_12 |     0.565 |
+|       RM_reg_0_15_13_13 |     0.586 |
+|       RM_reg_0_15_14_14 |     0.595 |
+|       RM_reg_0_15_15_15 |     0.552 |
+|       RM_reg_0_15_1_1   |     0.420 |
+|       RM_reg_0_15_2_2   |     0.515 |
+|       RM_reg_0_15_3_3   |     0.462 |
+|       RM_reg_0_15_4_4   |     0.487 |
+|       RM_reg_0_15_5_5   |     0.455 |
+|       RM_reg_0_15_6_6   |     0.467 |
+|       RM_reg_0_15_7_7   |     0.439 |
+|       RM_reg_0_15_8_8   |     0.582 |
+|       RM_reg_0_15_9_9   |     0.606 |
 +-------------------------+-----------+
 
 

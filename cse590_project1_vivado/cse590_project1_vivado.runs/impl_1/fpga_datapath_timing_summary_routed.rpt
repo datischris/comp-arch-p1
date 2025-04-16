@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
-| Date         : Sun Apr 13 10:48:58 2025
+| Date         : Wed Apr 16 00:00:15 2025
 | Host         : CHRIS-LAPTOP running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file fpga_datapath_timing_summary_routed.rpt -pb fpga_datapath_timing_summary_routed.pb -rpx fpga_datapath_timing_summary_routed.rpx -warn_on_violation
 | Design       : fpga_datapath
@@ -53,10 +53,10 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (2090)
+1. checking no_clock (2089)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (4305)
+4. checking unconstrained_internal_endpoints (4303)
 5. checking no_input_delay (0)
 6. checking no_output_delay (16)
 7. checking multiple_clock (0)
@@ -66,9 +66,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (2090)
+1. checking no_clock (2089)
 ---------------------------
- There are 2090 register/latch pins with no clock driven by root clock pin: clock (HIGH)
+ There are 2089 register/latch pins with no clock driven by root clock pin: clock (HIGH)
 
 
 2. checking constant_clock (0)
@@ -81,9 +81,9 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (4305)
+4. checking unconstrained_internal_endpoints (4303)
 ---------------------------------------------------
- There are 4305 pins that are not constrained for maximum delay. (HIGH)
+ There are 4303 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -142,7 +142,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                 4321          inf        0.000                      0                 4321           NA           NA                      NA                    NA  
+        inf        0.000                      0                 4319          inf        0.000                      0                 4319           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -211,481 +211,531 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay          4321 Endpoints
-Min Delay          4321 Endpoints
+Max Delay          4319 Endpoints
+Min Delay          4319 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            leds[12]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        39.709ns  (logic 6.596ns (16.611%)  route 33.113ns (83.389%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.707    27.560    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X38Y29         LUT6 (Prop_lut6_I4_O)        0.124    27.684 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_81/O
-                         net (fo=1, routed)           0.000    27.684    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_81_n_0
-    SLICE_X38Y29         MUXF7 (Prop_muxf7_I0_O)      0.241    27.925 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_36/O
-                         net (fo=1, routed)           0.000    27.925    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_36_n_0
-    SLICE_X38Y29         MUXF8 (Prop_muxf8_I0_O)      0.098    28.023 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_14/O
-                         net (fo=1, routed)           1.731    29.754    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_14_n_0
-    SLICE_X14Y20         LUT6 (Prop_lut6_I3_O)        0.319    30.073 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_5/O
-                         net (fo=1, routed)           0.000    30.073    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_5_n_0
-    SLICE_X14Y20         MUXF7 (Prop_muxf7_I1_O)      0.247    30.320 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_2/O
-                         net (fo=2, routed)           0.000    30.320    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_5_0
-    SLICE_X14Y20         MUXF8 (Prop_muxf8_I0_O)      0.098    30.418 r  datapath_inst/dm_inst/leds_OBUF[12]_inst_i_3/O
-                         net (fo=1, routed)           0.929    31.347    datapath_inst/pc_inst/leds[12]
-    SLICE_X15Y24         LUT6 (Prop_lut6_I3_O)        0.319    31.666 r  datapath_inst/pc_inst/leds_OBUF[12]_inst_i_1/O
-                         net (fo=1, routed)           4.525    36.191    leds_OBUF[12]
-    P3                   OBUF (Prop_obuf_I_O)         3.518    39.709 r  leds_OBUF[12]_inst/O
-                         net (fo=0)                   0.000    39.709    leds[12]
-    P3                                                                r  leds[12] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
   Destination:            leds[15]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        39.694ns  (logic 6.607ns (16.646%)  route 33.086ns (83.354%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        39.239ns  (logic 7.102ns (18.101%)  route 32.136ns (81.899%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.353    27.206    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X40Y28         LUT6 (Prop_lut6_I4_O)        0.124    27.330 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_81/O
-                         net (fo=1, routed)           0.000    27.330    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_81_n_0
-    SLICE_X40Y28         MUXF7 (Prop_muxf7_I1_O)      0.245    27.575 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_36/O
-                         net (fo=1, routed)           0.000    27.575    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_36_n_0
-    SLICE_X40Y28         MUXF8 (Prop_muxf8_I0_O)      0.104    27.679 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_14/O
-                         net (fo=1, routed)           1.564    29.243    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_14_n_0
-    SLICE_X28Y20         LUT6 (Prop_lut6_I3_O)        0.316    29.559 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_5/O
-                         net (fo=1, routed)           0.000    29.559    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_5_n_0
-    SLICE_X28Y20         MUXF7 (Prop_muxf7_I1_O)      0.245    29.804 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_2/O
-                         net (fo=2, routed)           0.000    29.804    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_5_0
-    SLICE_X28Y20         MUXF8 (Prop_muxf8_I0_O)      0.104    29.908 r  datapath_inst/dm_inst/leds_OBUF[15]_inst_i_5/O
-                         net (fo=1, routed)           1.185    31.093    datapath_inst/pc_inst/leds[15]_0
-    SLICE_X15Y27         LUT6 (Prop_lut6_I3_O)        0.316    31.409 r  datapath_inst/pc_inst/leds_OBUF[15]_inst_i_1/O
-                         net (fo=1, routed)           4.763    36.172    leds_OBUF[15]
-    L1                   OBUF (Prop_obuf_I_O)         3.521    39.694 r  leds_OBUF[15]_inst/O
-                         net (fo=0)                   0.000    39.694    leds[15]
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       17.620    27.232    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X51Y8          LUT6 (Prop_lut6_I2_O)        0.124    27.356 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_90/O
+                         net (fo=1, routed)           0.000    27.356    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_90_n_0
+    SLICE_X51Y8          MUXF7 (Prop_muxf7_I0_O)      0.212    27.568 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_41/O
+                         net (fo=1, routed)           0.000    27.568    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_41_n_0
+    SLICE_X51Y8          MUXF8 (Prop_muxf8_I1_O)      0.094    27.662 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_16/O
+                         net (fo=1, routed)           1.618    29.280    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_16_n_0
+    SLICE_X34Y19         LUT6 (Prop_lut6_I0_O)        0.316    29.596 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_6/O
+                         net (fo=1, routed)           0.000    29.596    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_6_n_0
+    SLICE_X34Y19         MUXF7 (Prop_muxf7_I0_O)      0.209    29.805 r  datapath_inst/dm_inst/RM_reg_0_15_15_15_i_3/O
+                         net (fo=2, routed)           0.000    29.805    datapath_inst/dm_inst/RM_reg_0_15_15_15_i_7_0
+    SLICE_X34Y19         MUXF8 (Prop_muxf8_I1_O)      0.088    29.893 r  datapath_inst/dm_inst/leds_OBUF[15]_inst_i_5/O
+                         net (fo=1, routed)           0.671    30.564    datapath_inst/pc_inst/leds[15]
+    SLICE_X34Y20         LUT6 (Prop_lut6_I4_O)        0.319    30.883 r  datapath_inst/pc_inst/leds_OBUF[15]_inst_i_1/O
+                         net (fo=1, routed)           4.834    35.717    leds_OBUF[15]
+    L1                   OBUF (Prop_obuf_I_O)         3.521    39.239 r  leds_OBUF[15]_inst/O
+                         net (fo=0)                   0.000    39.239    leds[15]
     L1                                                                r  leds[15] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            leds[12]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        39.222ns  (logic 7.110ns (18.128%)  route 32.112ns (81.872%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       18.009    27.620    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X51Y10         LUT6 (Prop_lut6_I2_O)        0.124    27.744 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_92/O
+                         net (fo=1, routed)           0.000    27.744    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_92_n_0
+    SLICE_X51Y10         MUXF7 (Prop_muxf7_I1_O)      0.217    27.961 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_41/O
+                         net (fo=1, routed)           0.000    27.961    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_41_n_0
+    SLICE_X51Y10         MUXF8 (Prop_muxf8_I1_O)      0.094    28.055 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_16/O
+                         net (fo=1, routed)           1.919    29.974    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_16_n_0
+    SLICE_X35Y24         LUT6 (Prop_lut6_I0_O)        0.316    30.290 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_6/O
+                         net (fo=1, routed)           0.000    30.290    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_6_n_0
+    SLICE_X35Y24         MUXF7 (Prop_muxf7_I0_O)      0.212    30.502 r  datapath_inst/dm_inst/RM_reg_0_15_12_12_i_3/O
+                         net (fo=2, routed)           0.000    30.502    datapath_inst/dm_inst/RM_reg_0_15_12_12_i_7_0
+    SLICE_X35Y24         MUXF8 (Prop_muxf8_I1_O)      0.094    30.596 r  datapath_inst/dm_inst/leds_OBUF[12]_inst_i_3/O
+                         net (fo=1, routed)           0.530    31.126    datapath_inst/pc_inst/leds[12]
+    SLICE_X34Y24         LUT6 (Prop_lut6_I4_O)        0.316    31.442 r  datapath_inst/pc_inst/leds_OBUF[12]_inst_i_1/O
+                         net (fo=1, routed)           4.262    35.704    leds_OBUF[12]
+    P3                   OBUF (Prop_obuf_I_O)         3.518    39.222 r  leds_OBUF[12]_inst/O
+                         net (fo=0)                   0.000    39.222    leds[12]
+    P3                                                                r  leds[12] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
   Destination:            leds[13]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        39.670ns  (logic 6.549ns (16.510%)  route 33.121ns (83.490%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        38.654ns  (logic 7.099ns (18.366%)  route 31.555ns (81.634%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.203    27.056    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X42Y27         LUT6 (Prop_lut6_I4_O)        0.124    27.180 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_83/O
-                         net (fo=1, routed)           0.000    27.180    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_83_n_0
-    SLICE_X42Y27         MUXF7 (Prop_muxf7_I1_O)      0.214    27.394 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_37/O
-                         net (fo=1, routed)           0.000    27.394    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_37_n_0
-    SLICE_X42Y27         MUXF8 (Prop_muxf8_I1_O)      0.088    27.482 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_14/O
-                         net (fo=1, routed)           1.699    29.181    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_14_n_0
-    SLICE_X15Y19         LUT6 (Prop_lut6_I3_O)        0.319    29.500 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_5/O
-                         net (fo=1, routed)           0.000    29.500    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_5_n_0
-    SLICE_X15Y19         MUXF7 (Prop_muxf7_I1_O)      0.245    29.745 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_2/O
-                         net (fo=2, routed)           0.000    29.745    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_5_0
-    SLICE_X15Y19         MUXF8 (Prop_muxf8_I0_O)      0.104    29.849 r  datapath_inst/dm_inst/leds_OBUF[13]_inst_i_3/O
-                         net (fo=1, routed)           1.474    31.323    datapath_inst/pc_inst/leds[13]
-    SLICE_X15Y27         LUT6 (Prop_lut6_I3_O)        0.316    31.639 r  datapath_inst/pc_inst/leds_OBUF[13]_inst_i_1/O
-                         net (fo=1, routed)           4.524    36.163    leds_OBUF[13]
-    N3                   OBUF (Prop_obuf_I_O)         3.507    39.670 r  leds_OBUF[13]_inst/O
-                         net (fo=0)                   0.000    39.670    leds[13]
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       17.805    27.417    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X51Y9          LUT6 (Prop_lut6_I2_O)        0.124    27.541 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_91/O
+                         net (fo=1, routed)           0.000    27.541    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_91_n_0
+    SLICE_X51Y9          MUXF7 (Prop_muxf7_I1_O)      0.217    27.758 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_41/O
+                         net (fo=1, routed)           0.000    27.758    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_41_n_0
+    SLICE_X51Y9          MUXF8 (Prop_muxf8_I1_O)      0.094    27.852 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_16/O
+                         net (fo=1, routed)           1.527    29.378    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_16_n_0
+    SLICE_X33Y20         LUT6 (Prop_lut6_I0_O)        0.316    29.694 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_6/O
+                         net (fo=1, routed)           0.000    29.694    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_6_n_0
+    SLICE_X33Y20         MUXF7 (Prop_muxf7_I0_O)      0.212    29.906 r  datapath_inst/dm_inst/RM_reg_0_15_13_13_i_3/O
+                         net (fo=2, routed)           0.000    29.906    datapath_inst/dm_inst/RM_reg_0_15_13_13_i_7_0
+    SLICE_X33Y20         MUXF8 (Prop_muxf8_I1_O)      0.094    30.000 r  datapath_inst/dm_inst/leds_OBUF[13]_inst_i_3/O
+                         net (fo=1, routed)           0.409    30.410    datapath_inst/pc_inst/leds[13]
+    SLICE_X33Y22         LUT6 (Prop_lut6_I4_O)        0.316    30.726 r  datapath_inst/pc_inst/leds_OBUF[13]_inst_i_1/O
+                         net (fo=1, routed)           4.421    35.147    leds_OBUF[13]
+    N3                   OBUF (Prop_obuf_I_O)         3.507    38.654 r  leds_OBUF[13]_inst/O
+                         net (fo=0)                   0.000    38.654    leds[13]
     N3                                                                r  leds[13] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
   Destination:            leds[14]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.820ns  (logic 6.594ns (17.436%)  route 31.226ns (82.564%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        38.347ns  (logic 7.138ns (18.615%)  route 31.208ns (81.385%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       16.782    26.636    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X39Y25         LUT6 (Prop_lut6_I4_O)        0.124    26.760 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_80/O
-                         net (fo=1, routed)           0.000    26.760    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_80_n_0
-    SLICE_X39Y25         MUXF7 (Prop_muxf7_I0_O)      0.238    26.998 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_36/O
-                         net (fo=1, routed)           0.000    26.998    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_36_n_0
-    SLICE_X39Y25         MUXF8 (Prop_muxf8_I0_O)      0.104    27.102 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_14/O
-                         net (fo=1, routed)           1.140    28.242    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_14_n_0
-    SLICE_X15Y18         LUT6 (Prop_lut6_I3_O)        0.316    28.558 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_5/O
-                         net (fo=1, routed)           0.000    28.558    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_5_n_0
-    SLICE_X15Y18         MUXF7 (Prop_muxf7_I1_O)      0.245    28.803 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_2/O
-                         net (fo=2, routed)           0.000    28.803    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_5_0
-    SLICE_X15Y18         MUXF8 (Prop_muxf8_I0_O)      0.104    28.907 r  datapath_inst/dm_inst/leds_OBUF[14]_inst_i_3/O
-                         net (fo=1, routed)           1.184    30.091    datapath_inst/pc_inst/leds[14]_0
-    SLICE_X15Y27         LUT6 (Prop_lut6_I3_O)        0.316    30.407 r  datapath_inst/pc_inst/leds_OBUF[14]_inst_i_1/O
-                         net (fo=1, routed)           3.898    34.305    leds_OBUF[14]
-    P1                   OBUF (Prop_obuf_I_O)         3.515    37.820 r  leds_OBUF[14]_inst/O
-                         net (fo=0)                   0.000    37.820    leds[14]
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       18.067    27.679    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X46Y9          LUT6 (Prop_lut6_I2_O)        0.124    27.803 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_88/O
+                         net (fo=1, routed)           0.000    27.803    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_88_n_0
+    SLICE_X46Y9          MUXF7 (Prop_muxf7_I0_O)      0.241    28.044 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_40/O
+                         net (fo=1, routed)           0.000    28.044    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_40_n_0
+    SLICE_X46Y9          MUXF8 (Prop_muxf8_I0_O)      0.098    28.142 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_16/O
+                         net (fo=1, routed)           1.317    29.459    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_16_n_0
+    SLICE_X28Y20         LUT6 (Prop_lut6_I0_O)        0.319    29.778 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_6/O
+                         net (fo=1, routed)           0.000    29.778    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_6_n_0
+    SLICE_X28Y20         MUXF7 (Prop_muxf7_I0_O)      0.212    29.990 r  datapath_inst/dm_inst/RM_reg_0_15_14_14_i_3/O
+                         net (fo=2, routed)           0.000    29.990    datapath_inst/dm_inst/RM_reg_0_15_14_14_i_7_0
+    SLICE_X28Y20         MUXF8 (Prop_muxf8_I1_O)      0.094    30.084 r  datapath_inst/dm_inst/leds_OBUF[14]_inst_i_3/O
+                         net (fo=1, routed)           0.582    30.667    datapath_inst/pc_inst/leds[14]_0
+    SLICE_X28Y21         LUT6 (Prop_lut6_I4_O)        0.316    30.983 r  datapath_inst/pc_inst/leds_OBUF[14]_inst_i_1/O
+                         net (fo=1, routed)           3.849    34.831    leds_OBUF[14]
+    P1                   OBUF (Prop_obuf_I_O)         3.515    38.347 r  leds_OBUF[14]_inst/O
+                         net (fo=0)                   0.000    38.347    leds[14]
     P1                                                                r  leds[14] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            leds[10]
+  Destination:            leds[8]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.721ns  (logic 6.567ns (17.410%)  route 31.154ns (82.590%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        37.735ns  (logic 7.134ns (18.906%)  route 30.601ns (81.094%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.067    26.920    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X46Y25         LUT6 (Prop_lut6_I4_O)        0.124    27.044 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_83/O
-                         net (fo=1, routed)           0.000    27.044    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_83_n_0
-    SLICE_X46Y25         MUXF7 (Prop_muxf7_I1_O)      0.214    27.258 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_37/O
-                         net (fo=1, routed)           0.000    27.258    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_37_n_0
-    SLICE_X46Y25         MUXF8 (Prop_muxf8_I1_O)      0.088    27.346 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_14/O
-                         net (fo=1, routed)           1.540    28.886    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_14_n_0
-    SLICE_X15Y17         LUT6 (Prop_lut6_I3_O)        0.319    29.205 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_5/O
-                         net (fo=1, routed)           0.000    29.205    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_5_n_0
-    SLICE_X15Y17         MUXF7 (Prop_muxf7_I1_O)      0.245    29.450 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_2/O
-                         net (fo=2, routed)           0.000    29.450    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_5_0
-    SLICE_X15Y17         MUXF8 (Prop_muxf8_I0_O)      0.104    29.554 r  datapath_inst/dm_inst/leds_OBUF[10]_inst_i_3/O
-                         net (fo=1, routed)           1.001    30.556    datapath_inst/pc_inst/leds[10]
-    SLICE_X15Y24         LUT6 (Prop_lut6_I3_O)        0.316    30.872 r  datapath_inst/pc_inst/leds_OBUF[10]_inst_i_1/O
-                         net (fo=1, routed)           3.325    34.196    leds_OBUF[10]
-    W3                   OBUF (Prop_obuf_I_O)         3.525    37.721 r  leds_OBUF[10]_inst/O
-                         net (fo=0)                   0.000    37.721    leds[10]
-    W3                                                                r  leds[10] (OUT)
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       18.225    27.837    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X44Y11         LUT6 (Prop_lut6_I2_O)        0.124    27.961 r  datapath_inst/dm_inst/RM_reg_0_15_8_8_i_91/O
+                         net (fo=1, routed)           0.000    27.961    datapath_inst/dm_inst/RM_reg_0_15_8_8_i_91_n_0
+    SLICE_X44Y11         MUXF7 (Prop_muxf7_I1_O)      0.245    28.206 r  datapath_inst/dm_inst/RM_reg_0_15_8_8_i_41/O
+                         net (fo=1, routed)           0.000    28.206    datapath_inst/dm_inst/RM_reg_0_15_8_8_i_41_n_0
+    SLICE_X44Y11         MUXF8 (Prop_muxf8_I0_O)      0.104    28.310 r  datapath_inst/dm_inst/RM_reg_0_15_8_8_i_16/O
+                         net (fo=1, routed)           1.510    29.820    datapath_inst/dm_inst/RM_reg_0_15_8_8_i_16_n_0
+    SLICE_X29Y19         LUT6 (Prop_lut6_I0_O)        0.316    30.136 r  datapath_inst/dm_inst/RM_reg_0_15_8_8_i_6/O
+                         net (fo=1, routed)           0.000    30.136    datapath_inst/dm_inst/RM_reg_0_15_8_8_i_6_n_0
+    SLICE_X29Y19         MUXF7 (Prop_muxf7_I0_O)      0.212    30.348 r  datapath_inst/dm_inst/RM_reg_0_15_8_8_i_3/O
+                         net (fo=2, routed)           0.000    30.348    datapath_inst/dm_inst/RM_reg_0_15_8_8_i_7_0
+    SLICE_X29Y19         MUXF8 (Prop_muxf8_I1_O)      0.094    30.442 r  datapath_inst/dm_inst/leds_OBUF[8]_inst_i_3/O
+                         net (fo=1, routed)           0.745    31.187    datapath_inst/pc_inst/leds[8]
+    SLICE_X12Y19         LUT6 (Prop_lut6_I4_O)        0.316    31.503 r  datapath_inst/pc_inst/leds_OBUF[8]_inst_i_1/O
+                         net (fo=1, routed)           2.728    34.231    leds_OBUF[8]
+    V13                  OBUF (Prop_obuf_I_O)         3.504    37.735 r  leds_OBUF[8]_inst/O
+                         net (fo=0)                   0.000    37.735    leds[8]
+    V13                                                               r  leds[8] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            leds[9]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.483ns  (logic 6.550ns (17.475%)  route 30.933ns (82.525%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.247    27.100    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X46Y27         LUT6 (Prop_lut6_I4_O)        0.124    27.224 r  datapath_inst/dm_inst/RM_reg_0_15_9_9_i_83/O
-                         net (fo=1, routed)           0.000    27.224    datapath_inst/dm_inst/RM_reg_0_15_9_9_i_83_n_0
-    SLICE_X46Y27         MUXF7 (Prop_muxf7_I1_O)      0.214    27.438 r  datapath_inst/dm_inst/RM_reg_0_15_9_9_i_37/O
-                         net (fo=1, routed)           0.000    27.438    datapath_inst/dm_inst/RM_reg_0_15_9_9_i_37_n_0
-    SLICE_X46Y27         MUXF8 (Prop_muxf8_I1_O)      0.088    27.526 r  datapath_inst/dm_inst/RM_reg_0_15_9_9_i_14/O
-                         net (fo=1, routed)           1.280    28.806    datapath_inst/dm_inst/RM_reg_0_15_9_9_i_14_n_0
-    SLICE_X15Y16         LUT6 (Prop_lut6_I3_O)        0.319    29.125 r  datapath_inst/dm_inst/RM_reg_0_15_9_9_i_5/O
-                         net (fo=1, routed)           0.000    29.125    datapath_inst/dm_inst/RM_reg_0_15_9_9_i_5_n_0
-    SLICE_X15Y16         MUXF7 (Prop_muxf7_I1_O)      0.245    29.370 r  datapath_inst/dm_inst/RM_reg_0_15_9_9_i_2/O
-                         net (fo=2, routed)           0.000    29.370    datapath_inst/dm_inst/RM_reg_0_15_9_9_i_5_0
-    SLICE_X15Y16         MUXF8 (Prop_muxf8_I0_O)      0.104    29.474 r  datapath_inst/dm_inst/leds_OBUF[9]_inst_i_3/O
-                         net (fo=1, routed)           0.696    30.170    datapath_inst/pc_inst/leds[9]
-    SLICE_X15Y21         LUT6 (Prop_lut6_I3_O)        0.316    30.486 r  datapath_inst/pc_inst/leds_OBUF[9]_inst_i_1/O
-                         net (fo=1, routed)           3.489    33.975    leds_OBUF[9]
-    V3                   OBUF (Prop_obuf_I_O)         3.508    37.483 r  leds_OBUF[9]_inst/O
-                         net (fo=0)                   0.000    37.483    leds[9]
-    V3                                                                r  leds[9] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            leds[0]
-                            (output port)
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.385ns  (logic 6.590ns (17.627%)  route 30.795ns (82.373%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.330    27.183    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X39Y27         LUT6 (Prop_lut6_I4_O)        0.124    27.307 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_89/O
-                         net (fo=1, routed)           0.000    27.307    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_89_n_0
-    SLICE_X39Y27         MUXF7 (Prop_muxf7_I1_O)      0.245    27.552 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_44/O
-                         net (fo=1, routed)           0.000    27.552    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_44_n_0
-    SLICE_X39Y27         MUXF8 (Prop_muxf8_I0_O)      0.104    27.656 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_22/O
-                         net (fo=1, routed)           1.903    29.559    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_22_n_0
-    SLICE_X14Y15         LUT6 (Prop_lut6_I3_O)        0.316    29.875 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_13/O
-                         net (fo=1, routed)           0.000    29.875    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_1_1
-    SLICE_X14Y15         MUXF7 (Prop_muxf7_I1_O)      0.247    30.122 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_9/O
-                         net (fo=2, routed)           0.000    30.122    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_9_n_0
-    SLICE_X14Y15         MUXF8 (Prop_muxf8_I0_O)      0.098    30.220 r  datapath_inst/pc_inst/leds_OBUF[0]_inst_i_3/O
-                         net (fo=1, routed)           0.974    31.194    datapath_inst/pc_inst/leds_OBUF[0]_inst_i_3_n_0
-    SLICE_X12Y15         LUT6 (Prop_lut6_I3_O)        0.319    31.513 r  datapath_inst/pc_inst/leds_OBUF[0]_inst_i_1/O
-                         net (fo=1, routed)           2.367    33.880    leds_OBUF[0]
-    U16                  OBUF (Prop_obuf_I_O)         3.505    37.385 r  leds_OBUF[0]_inst/O
-                         net (fo=0)                   0.000    37.385    leds[0]
-    U16                                                               r  leds[0] (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
   Destination:            leds[7]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.352ns  (logic 6.586ns (17.631%)  route 30.766ns (82.369%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        37.451ns  (logic 7.081ns (18.907%)  route 30.370ns (81.093%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.710    27.564    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X40Y29         LUT6 (Prop_lut6_I4_O)        0.124    27.688 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_82/O
-                         net (fo=1, routed)           0.000    27.688    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_82_n_0
-    SLICE_X40Y29         MUXF7 (Prop_muxf7_I1_O)      0.245    27.933 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_37/O
-                         net (fo=1, routed)           0.000    27.933    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_37_n_0
-    SLICE_X40Y29         MUXF8 (Prop_muxf8_I0_O)      0.104    28.037 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_15/O
-                         net (fo=1, routed)           1.482    29.519    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_15_n_0
-    SLICE_X14Y17         LUT6 (Prop_lut6_I3_O)        0.316    29.835 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_6/O
-                         net (fo=1, routed)           0.000    29.835    datapath_inst/pc_inst/RM_reg_0_15_7_7_i_1_0
-    SLICE_X14Y17         MUXF7 (Prop_muxf7_I1_O)      0.247    30.082 r  datapath_inst/pc_inst/RM_reg_0_15_7_7_i_2/O
-                         net (fo=2, routed)           0.000    30.082    datapath_inst/pc_inst/RM_reg_0_15_7_7_i_2_n_0
-    SLICE_X14Y17         MUXF8 (Prop_muxf8_I0_O)      0.098    30.180 r  datapath_inst/pc_inst/leds_OBUF[7]_inst_i_3/O
-                         net (fo=1, routed)           0.809    30.989    datapath_inst/pc_inst/leds_OBUF[7]_inst_i_3_n_0
-    SLICE_X12Y15         LUT6 (Prop_lut6_I3_O)        0.319    31.308 r  datapath_inst/pc_inst/leds_OBUF[7]_inst_i_1/O
-                         net (fo=1, routed)           2.543    33.851    leds_OBUF[7]
-    V14                  OBUF (Prop_obuf_I_O)         3.501    37.352 r  leds_OBUF[7]_inst/O
-                         net (fo=0)                   0.000    37.352    leds[7]
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       17.633    27.245    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X50Y8          LUT6 (Prop_lut6_I2_O)        0.124    27.369 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_91/O
+                         net (fo=1, routed)           0.000    27.369    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_91_n_0
+    SLICE_X50Y8          MUXF7 (Prop_muxf7_I1_O)      0.214    27.583 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_41/O
+                         net (fo=1, routed)           0.000    27.583    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_41_n_0
+    SLICE_X50Y8          MUXF8 (Prop_muxf8_I1_O)      0.088    27.671 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_16/O
+                         net (fo=1, routed)           1.615    29.286    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_16_n_0
+    SLICE_X34Y16         LUT6 (Prop_lut6_I0_O)        0.319    29.605 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_6/O
+                         net (fo=1, routed)           0.000    29.605    datapath_inst/dm_inst/RM_reg_0_15_7_7_i_6_n_0
+    SLICE_X34Y16         MUXF7 (Prop_muxf7_I0_O)      0.209    29.814 r  datapath_inst/dm_inst/RM_reg_0_15_7_7_i_3/O
+                         net (fo=2, routed)           0.000    29.814    datapath_inst/pc_inst/leds_OBUF[7]_inst_i_1_0
+    SLICE_X34Y16         MUXF8 (Prop_muxf8_I1_O)      0.088    29.902 r  datapath_inst/pc_inst/leds_OBUF[7]_inst_i_3/O
+                         net (fo=1, routed)           1.007    30.909    datapath_inst/pc_inst/leds_OBUF[7]_inst_i_3_n_0
+    SLICE_X15Y16         LUT6 (Prop_lut6_I4_O)        0.319    31.228 r  datapath_inst/pc_inst/leds_OBUF[7]_inst_i_1/O
+                         net (fo=1, routed)           2.722    33.950    leds_OBUF[7]
+    V14                  OBUF (Prop_obuf_I_O)         3.501    37.451 r  leds_OBUF[7]_inst/O
+                         net (fo=0)                   0.000    37.451    leds[7]
     V14                                                               r  leds[7] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            leds[11]
+  Destination:            leds[10]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.245ns  (logic 6.552ns (17.591%)  route 30.693ns (82.409%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        37.334ns  (logic 7.117ns (19.064%)  route 30.216ns (80.936%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       16.824    26.677    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X43Y25         LUT6 (Prop_lut6_I4_O)        0.124    26.801 r  datapath_inst/dm_inst/RM_reg_0_15_11_11_i_83/O
-                         net (fo=1, routed)           0.000    26.801    datapath_inst/dm_inst/RM_reg_0_15_11_11_i_83_n_0
-    SLICE_X43Y25         MUXF7 (Prop_muxf7_I1_O)      0.217    27.018 r  datapath_inst/dm_inst/RM_reg_0_15_11_11_i_37/O
-                         net (fo=1, routed)           0.000    27.018    datapath_inst/dm_inst/RM_reg_0_15_11_11_i_37_n_0
-    SLICE_X43Y25         MUXF8 (Prop_muxf8_I1_O)      0.094    27.112 r  datapath_inst/dm_inst/RM_reg_0_15_11_11_i_14/O
-                         net (fo=1, routed)           1.273    28.385    datapath_inst/dm_inst/RM_reg_0_15_11_11_i_14_n_0
-    SLICE_X13Y15         LUT6 (Prop_lut6_I3_O)        0.316    28.701 r  datapath_inst/dm_inst/RM_reg_0_15_11_11_i_5/O
-                         net (fo=1, routed)           0.000    28.701    datapath_inst/pc_inst/RM_reg_0_15_11_11_i_1_0
-    SLICE_X13Y15         MUXF7 (Prop_muxf7_I1_O)      0.245    28.946 r  datapath_inst/pc_inst/RM_reg_0_15_11_11_i_2/O
-                         net (fo=2, routed)           0.000    28.946    datapath_inst/pc_inst/RM_reg_0_15_11_11_i_2_n_0
-    SLICE_X13Y15         MUXF8 (Prop_muxf8_I0_O)      0.104    29.050 r  datapath_inst/pc_inst/leds_OBUF[11]_inst_i_3/O
-                         net (fo=1, routed)           1.025    30.076    datapath_inst/pc_inst/leds_OBUF[11]_inst_i_3_n_0
-    SLICE_X13Y27         LUT6 (Prop_lut6_I3_O)        0.316    30.392 r  datapath_inst/pc_inst/leds_OBUF[11]_inst_i_1/O
-                         net (fo=1, routed)           3.349    33.741    leds_OBUF[11]
-    U3                   OBUF (Prop_obuf_I_O)         3.504    37.245 r  leds_OBUF[11]_inst/O
-                         net (fo=0)                   0.000    37.245    leds[11]
-    U3                                                                r  leds[11] (OUT)
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       17.470    27.082    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X48Y1          LUT6 (Prop_lut6_I2_O)        0.124    27.206 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_95/O
+                         net (fo=1, routed)           0.000    27.206    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_95_n_0
+    SLICE_X48Y1          MUXF7 (Prop_muxf7_I1_O)      0.217    27.423 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_43/O
+                         net (fo=1, routed)           0.000    27.423    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_43_n_0
+    SLICE_X48Y1          MUXF8 (Prop_muxf8_I1_O)      0.094    27.517 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_17/O
+                         net (fo=1, routed)           1.606    29.123    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_17_n_0
+    SLICE_X32Y21         LUT6 (Prop_lut6_I1_O)        0.316    29.439 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_6/O
+                         net (fo=1, routed)           0.000    29.439    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_6_n_0
+    SLICE_X32Y21         MUXF7 (Prop_muxf7_I0_O)      0.212    29.651 r  datapath_inst/dm_inst/RM_reg_0_15_10_10_i_3/O
+                         net (fo=2, routed)           0.000    29.651    datapath_inst/dm_inst/RM_reg_0_15_10_10_i_7_0
+    SLICE_X32Y21         MUXF8 (Prop_muxf8_I1_O)      0.094    29.745 r  datapath_inst/dm_inst/leds_OBUF[10]_inst_i_3/O
+                         net (fo=1, routed)           0.572    30.317    datapath_inst/pc_inst/leds[10]
+    SLICE_X31Y21         LUT6 (Prop_lut6_I4_O)        0.316    30.633 r  datapath_inst/pc_inst/leds_OBUF[10]_inst_i_1/O
+                         net (fo=1, routed)           3.175    33.808    leds_OBUF[10]
+    W3                   OBUF (Prop_obuf_I_O)         3.525    37.334 r  leds_OBUF[10]_inst/O
+                         net (fo=0)                   0.000    37.334    leds[10]
+    W3                                                                r  leds[10] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/pc_inst/pc_out_reg[8]/C
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            leds[1]
+  Destination:            leds[5]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        37.114ns  (logic 6.571ns (17.704%)  route 30.543ns (82.296%))
-  Logic Levels:           15  (FDRE=1 LUT2=1 LUT3=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+  Data Path Delay:        37.319ns  (logic 7.137ns (19.126%)  route 30.181ns (80.874%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X3Y21          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[8]/C
-    SLICE_X3Y21          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  datapath_inst/pc_inst/pc_out_reg[8]/Q
-                         net (fo=2, routed)           1.094     1.550    datapath_inst/pc_inst/Q[7]
-    SLICE_X4Y20          LUT3 (Prop_lut3_I1_O)        0.124     1.674 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11/O
-                         net (fo=25, routed)          1.220     2.894    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_11_n_0
-    SLICE_X3Y22          LUT6 (Prop_lut6_I1_O)        0.124     3.018 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
-                         net (fo=17, routed)          2.148     5.166    datapath_inst/rf_inst/RM_reg_0_15_3_3/DPRA1
-    SLICE_X8Y22          RAMD32 (Prop_ramd32_RADR1_O)
-                                                      0.153     5.319 f  datapath_inst/rf_inst/RM_reg_0_15_3_3/DP/O
-                         net (fo=14, routed)          1.091     6.410    datapath_inst/pc_inst/rd2[3]
-    SLICE_X7Y21          LUT5 (Prop_lut5_I1_O)        0.331     6.741 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6/O
-                         net (fo=7, routed)           1.395     8.136    datapath_inst/pc_inst/leds_OBUF[4]_inst_i_6_n_0
-    SLICE_X11Y23         LUT2 (Prop_lut2_I0_O)        0.118     8.254 r  datapath_inst/pc_inst/leds_OBUF[2]_inst_i_5/O
-                         net (fo=7, routed)           1.273     9.527    datapath_inst/pc_inst/ALURes0_carry_i_11_0
-    SLICE_X9Y20          LUT6 (Prop_lut6_I4_O)        0.326     9.853 r  datapath_inst/pc_inst/DM[252][7]_i_3/O
-                         net (fo=1141, routed)       17.414    27.267    datapath_inst/dm_inst/ALURes[0]
-    SLICE_X46Y28         LUT6 (Prop_lut6_I4_O)        0.124    27.391 r  datapath_inst/dm_inst/RM_reg_0_15_1_1_i_83/O
-                         net (fo=1, routed)           0.000    27.391    datapath_inst/dm_inst/RM_reg_0_15_1_1_i_83_n_0
-    SLICE_X46Y28         MUXF7 (Prop_muxf7_I1_O)      0.214    27.605 r  datapath_inst/dm_inst/RM_reg_0_15_1_1_i_37/O
-                         net (fo=1, routed)           0.000    27.605    datapath_inst/dm_inst/RM_reg_0_15_1_1_i_37_n_0
-    SLICE_X46Y28         MUXF8 (Prop_muxf8_I1_O)      0.088    27.693 r  datapath_inst/dm_inst/RM_reg_0_15_1_1_i_14/O
-                         net (fo=1, routed)           1.472    29.166    datapath_inst/dm_inst/RM_reg_0_15_1_1_i_14_n_0
-    SLICE_X12Y16         LUT6 (Prop_lut6_I3_O)        0.319    29.485 r  datapath_inst/dm_inst/RM_reg_0_15_1_1_i_5/O
-                         net (fo=1, routed)           0.000    29.485    datapath_inst/dm_inst/RM_reg_0_15_1_1_i_5_n_0
-    SLICE_X12Y16         MUXF7 (Prop_muxf7_I1_O)      0.247    29.732 r  datapath_inst/dm_inst/RM_reg_0_15_1_1_i_2/O
-                         net (fo=2, routed)           0.000    29.732    datapath_inst/dm_inst/RM_reg_0_15_1_1_i_5_0
-    SLICE_X12Y16         MUXF8 (Prop_muxf8_I0_O)      0.098    29.830 r  datapath_inst/dm_inst/leds_OBUF[1]_inst_i_3/O
-                         net (fo=1, routed)           0.642    30.471    datapath_inst/pc_inst/leds[1]
-    SLICE_X12Y21         LUT6 (Prop_lut6_I3_O)        0.319    30.790 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_1/O
-                         net (fo=1, routed)           2.793    33.584    leds_OBUF[1]
-    E19                  OBUF (Prop_obuf_I_O)         3.530    37.114 r  leds_OBUF[1]_inst/O
-                         net (fo=0)                   0.000    37.114    leds[1]
-    E19                                                               r  leds[1] (OUT)
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       17.470    27.082    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X52Y9          LUT6 (Prop_lut6_I2_O)        0.124    27.206 r  datapath_inst/dm_inst/RM_reg_0_15_5_5_i_88/O
+                         net (fo=1, routed)           0.000    27.206    datapath_inst/dm_inst/RM_reg_0_15_5_5_i_88_n_0
+    SLICE_X52Y9          MUXF7 (Prop_muxf7_I0_O)      0.241    27.447 r  datapath_inst/dm_inst/RM_reg_0_15_5_5_i_40/O
+                         net (fo=1, routed)           0.000    27.447    datapath_inst/dm_inst/RM_reg_0_15_5_5_i_40_n_0
+    SLICE_X52Y9          MUXF8 (Prop_muxf8_I0_O)      0.098    27.545 r  datapath_inst/dm_inst/RM_reg_0_15_5_5_i_16/O
+                         net (fo=1, routed)           1.487    29.032    datapath_inst/dm_inst/RM_reg_0_15_5_5_i_16_n_0
+    SLICE_X35Y16         LUT6 (Prop_lut6_I0_O)        0.319    29.351 r  datapath_inst/dm_inst/RM_reg_0_15_5_5_i_6/O
+                         net (fo=1, routed)           0.000    29.351    datapath_inst/dm_inst/RM_reg_0_15_5_5_i_6_n_0
+    SLICE_X35Y16         MUXF7 (Prop_muxf7_I0_O)      0.212    29.563 r  datapath_inst/dm_inst/RM_reg_0_15_5_5_i_3/O
+                         net (fo=2, routed)           0.000    29.563    datapath_inst/dm_inst/RM_reg_0_15_5_5_i_7_0
+    SLICE_X35Y16         MUXF8 (Prop_muxf8_I1_O)      0.094    29.657 r  datapath_inst/dm_inst/leds_OBUF[5]_inst_i_3/O
+                         net (fo=1, routed)           1.304    30.961    datapath_inst/pc_inst/leds[5]
+    SLICE_X14Y16         LUT6 (Prop_lut6_I4_O)        0.316    31.277 r  datapath_inst/pc_inst/leds_OBUF[5]_inst_i_1/O
+                         net (fo=1, routed)           2.528    33.804    leds_OBUF[5]
+    U15                  OBUF (Prop_obuf_I_O)         3.514    37.319 r  leds_OBUF[5]_inst/O
+                         net (fo=0)                   0.000    37.319    leds[5]
+    U15                                                               r  leds[5] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            leds[4]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.244ns  (logic 7.095ns (19.049%)  route 30.149ns (80.951%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       18.024    27.635    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X50Y10         LUT6 (Prop_lut6_I2_O)        0.124    27.759 r  datapath_inst/dm_inst/RM_reg_0_15_4_4_i_92/O
+                         net (fo=1, routed)           0.000    27.759    datapath_inst/dm_inst/RM_reg_0_15_4_4_i_92_n_0
+    SLICE_X50Y10         MUXF7 (Prop_muxf7_I1_O)      0.214    27.973 r  datapath_inst/dm_inst/RM_reg_0_15_4_4_i_41/O
+                         net (fo=1, routed)           0.000    27.973    datapath_inst/dm_inst/RM_reg_0_15_4_4_i_41_n_0
+    SLICE_X50Y10         MUXF8 (Prop_muxf8_I1_O)      0.088    28.061 r  datapath_inst/dm_inst/RM_reg_0_15_4_4_i_16/O
+                         net (fo=1, routed)           1.610    29.671    datapath_inst/dm_inst/RM_reg_0_15_4_4_i_16_n_0
+    SLICE_X35Y19         LUT6 (Prop_lut6_I0_O)        0.319    29.990 r  datapath_inst/dm_inst/RM_reg_0_15_4_4_i_6/O
+                         net (fo=1, routed)           0.000    29.990    datapath_inst/dm_inst/RM_reg_0_15_4_4_i_6_n_0
+    SLICE_X35Y19         MUXF7 (Prop_muxf7_I0_O)      0.212    30.202 r  datapath_inst/dm_inst/RM_reg_0_15_4_4_i_3/O
+                         net (fo=2, routed)           0.000    30.202    datapath_inst/dm_inst/RM_reg_0_15_4_4_i_7_0
+    SLICE_X35Y19         MUXF8 (Prop_muxf8_I1_O)      0.094    30.296 r  datapath_inst/dm_inst/leds_OBUF[4]_inst_i_3/O
+                         net (fo=1, routed)           0.855    31.151    datapath_inst/pc_inst/leds[4]
+    SLICE_X15Y19         LUT6 (Prop_lut6_I4_O)        0.316    31.467 r  datapath_inst/pc_inst/leds_OBUF[4]_inst_i_1/O
+                         net (fo=1, routed)           2.268    33.735    leds_OBUF[4]
+    W18                  OBUF (Prop_obuf_I_O)         3.509    37.244 r  leds_OBUF[4]_inst/O
+                         net (fo=0)                   0.000    37.244    leds[4]
+    W18                                                               r  leds[4] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 datapath_inst/pc_inst/pc_out_reg[7]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            leds[0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        37.023ns  (logic 7.129ns (19.255%)  route 29.895ns (80.745%))
+  Logic Levels:           17  (CARRY4=1 FDRE=1 LUT3=2 LUT4=1 LUT5=1 LUT6=5 MUXF7=2 MUXF8=2 OBUF=1 RAMD32=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[7]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  datapath_inst/pc_inst/pc_out_reg[7]/Q
+                         net (fo=4, routed)           0.816     1.334    datapath_inst/pc_inst/Q[6]
+    SLICE_X3Y12          LUT3 (Prop_lut3_I0_O)        0.152     1.486 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12/O
+                         net (fo=10, routed)          0.613     2.099    datapath_inst/pc_inst/RM_reg_0_15_0_0_i_12_n_0
+    SLICE_X7Y13          LUT5 (Prop_lut5_I1_O)        0.326     2.425 r  datapath_inst/pc_inst/RM_reg_0_15_0_0_i_7/O
+                         net (fo=18, routed)          2.290     4.715    datapath_inst/rf_inst/RM_reg_0_15_0_0/DPRA1
+    SLICE_X6Y21          RAMD32 (Prop_ramd32_RADR1_O)
+                                                      0.124     4.839 r  datapath_inst/rf_inst/RM_reg_0_15_0_0/DP/O
+                         net (fo=9, routed)           1.497     6.336    datapath_inst/pc_inst/rd2[0]
+    SLICE_X1Y17          LUT3 (Prop_lut3_I2_O)        0.124     6.460 r  datapath_inst/pc_inst/ALURes0_carry_i_12/O
+                         net (fo=7, routed)           1.003     7.464    datapath_inst/rf_inst/zero_signal0_carry[0]
+    SLICE_X3Y17          LUT4 (Prop_lut4_I3_O)        0.124     7.588 r  datapath_inst/rf_inst/i__carry_i_8/O
+                         net (fo=1, routed)           0.000     7.588    datapath_inst/alu_inst/leds_OBUF[0]_inst_i_4_1[0]
+    SLICE_X3Y17          CARRY4 (Prop_carry4_S[0]_O[1])
+                                                      0.424     8.012 r  datapath_inst/alu_inst/ALURes0_inferred__0/i__carry/O[1]
+                         net (fo=1, routed)           0.521     8.532    datapath_inst/pc_inst/leds_OBUF[15]_inst_i_4_1[0]
+    SLICE_X2Y17          LUT6 (Prop_lut6_I1_O)        0.303     8.835 r  datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4/O
+                         net (fo=2, routed)           0.653     9.488    datapath_inst/pc_inst/leds_OBUF[1]_inst_i_4_n_0
+    SLICE_X5Y17          LUT6 (Prop_lut6_I5_O)        0.124     9.612 r  datapath_inst/pc_inst/DM[255][7]_i_7/O
+                         net (fo=1261, routed)       18.135    27.746    datapath_inst/dm_inst/ALURes[1]
+    SLICE_X45Y11         LUT6 (Prop_lut6_I2_O)        0.124    27.870 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_99/O
+                         net (fo=1, routed)           0.000    27.870    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_99_n_0
+    SLICE_X45Y11         MUXF7 (Prop_muxf7_I1_O)      0.245    28.115 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_50/O
+                         net (fo=1, routed)           0.000    28.115    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_50_n_0
+    SLICE_X45Y11         MUXF8 (Prop_muxf8_I0_O)      0.104    28.219 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_26/O
+                         net (fo=1, routed)           1.244    29.464    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_26_n_0
+    SLICE_X30Y19         LUT6 (Prop_lut6_I0_O)        0.316    29.780 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_16/O
+                         net (fo=1, routed)           0.000    29.780    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_16_n_0
+    SLICE_X30Y19         MUXF7 (Prop_muxf7_I0_O)      0.209    29.989 r  datapath_inst/dm_inst/RM_reg_0_15_0_0_i_10/O
+                         net (fo=2, routed)           0.000    29.989    datapath_inst/dm_inst/RM_reg_0_15_0_0_i_17_0
+    SLICE_X30Y19         MUXF8 (Prop_muxf8_I1_O)      0.088    30.077 r  datapath_inst/dm_inst/leds_OBUF[0]_inst_i_3/O
+                         net (fo=1, routed)           0.717    30.794    datapath_inst/pc_inst/leds[0]
+    SLICE_X11Y19         LUT6 (Prop_lut6_I4_O)        0.319    31.113 r  datapath_inst/pc_inst/leds_OBUF[0]_inst_i_1/O
+                         net (fo=1, routed)           2.405    33.519    leds_OBUF[0]
+    U16                  OBUF (Prop_obuf_I_O)         3.505    37.023 r  leds_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    37.023    leds[0]
+    U16                                                               r  leds[0] (OUT)
   -------------------------------------------------------------------    -------------------
 
 
@@ -700,102 +750,17 @@ Slack:                    inf
   Destination:            start_reg_reg/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.308ns  (logic 0.249ns (80.777%)  route 0.059ns (19.223%))
+  Data Path Delay:        0.286ns  (logic 0.232ns (81.003%)  route 0.054ns (18.997%))
   Logic Levels:           2  (FDRE=1 LUT1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  has_started_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.151     0.151 f  has_started_reg/Q
-                         net (fo=1, routed)           0.059     0.210    has_started
-    SLICE_X2Y22          LUT1 (Prop_lut1_I0_O)        0.098     0.308 r  start_reg_i_1/O
-                         net (fo=1, routed)           0.000     0.308    start_reg_i_1_n_0
-    SLICE_X2Y22          FDRE                                         r  start_reg_reg/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 start_reg_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            datapath_inst/pc_inst/pc_out_reg[8]/R
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.359ns  (logic 0.167ns (46.555%)  route 0.192ns (53.445%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.192     0.359    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y21          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[8]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 start_reg_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            datapath_inst/pc_inst/pc_out_reg[4]/R
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.360ns  (logic 0.167ns (46.364%)  route 0.193ns (53.636%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.193     0.360    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y20          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[4]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 start_reg_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            datapath_inst/pc_inst/pc_out_reg[5]/R
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.360ns  (logic 0.167ns (46.364%)  route 0.193ns (53.636%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.193     0.360    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y20          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[5]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 start_reg_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            datapath_inst/pc_inst/pc_out_reg[6]/R
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.360ns  (logic 0.167ns (46.364%)  route 0.193ns (53.636%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.193     0.360    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y20          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[6]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 start_reg_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            datapath_inst/pc_inst/pc_out_reg[7]/R
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.360ns  (logic 0.167ns (46.364%)  route 0.193ns (53.636%))
-  Logic Levels:           1  (FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.193     0.360    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y20          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[7]/R
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  has_started_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.133     0.133 f  has_started_reg/Q
+                         net (fo=1, routed)           0.054     0.187    has_started
+    SLICE_X3Y10          LUT1 (Prop_lut1_I0_O)        0.099     0.286 r  start_reg_i_1/O
+                         net (fo=1, routed)           0.000     0.286    start_reg_i_1_n_0
+    SLICE_X3Y10          FDRE                                         r  start_reg_reg/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -804,15 +769,15 @@ Slack:                    inf
   Destination:            datapath_inst/pc_inst/pc_out_reg[1]/R
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.414ns  (logic 0.167ns (40.331%)  route 0.247ns (59.669%))
+  Data Path Delay:        0.329ns  (logic 0.146ns (44.337%)  route 0.183ns (55.663%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.247     0.414    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y19          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[1]/R
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.183     0.329    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y10          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -821,15 +786,15 @@ Slack:                    inf
   Destination:            datapath_inst/pc_inst/pc_out_reg[2]/R
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.414ns  (logic 0.167ns (40.331%)  route 0.247ns (59.669%))
+  Data Path Delay:        0.329ns  (logic 0.146ns (44.337%)  route 0.183ns (55.663%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.247     0.414    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y19          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[2]/R
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.183     0.329    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y10          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -838,35 +803,132 @@ Slack:                    inf
   Destination:            datapath_inst/pc_inst/pc_out_reg[3]/R
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.414ns  (logic 0.167ns (40.331%)  route 0.247ns (59.669%))
+  Data Path Delay:        0.329ns  (logic 0.146ns (44.337%)  route 0.183ns (55.663%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X2Y22          FDRE                         0.000     0.000 r  start_reg_reg/C
-    SLICE_X2Y22          FDRE (Prop_fdre_C_Q)         0.167     0.167 r  start_reg_reg/Q
-                         net (fo=8, routed)           0.247     0.414    datapath_inst/pc_inst/SR[0]
-    SLICE_X3Y19          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[3]/R
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.183     0.329    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y10          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 datapath_inst/rf_inst/RM_reg_0_15_12_12/SP/CLK
-                            (rising edge-triggered cell RAMD32)
-  Destination:            datapath_inst/dm_inst/DM_reg[189][4]/D
+  Source:                 start_reg_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            datapath_inst/pc_inst/pc_out_reg[4]/R
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.619ns  (logic 0.433ns (69.949%)  route 0.186ns (30.051%))
-  Logic Levels:           2  (LUT5=1 RAMD32=1)
+  Data Path Delay:        0.384ns  (logic 0.146ns (38.004%)  route 0.238ns (61.996%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X10Y23         RAMD32                       0.000     0.000 r  datapath_inst/rf_inst/RM_reg_0_15_12_12/SP/CLK
-    SLICE_X10Y23         RAMD32 (Prop_ramd32_CLK_O)
-                                                      0.388     0.388 r  datapath_inst/rf_inst/RM_reg_0_15_12_12/SP/O
-                         net (fo=267, routed)         0.186     0.574    datapath_inst/pc_inst/rd1[12]
-    SLICE_X9Y21          LUT5 (Prop_lut5_I4_O)        0.045     0.619 r  datapath_inst/pc_inst/DM[189][4]_i_1/O
-                         net (fo=1, routed)           0.000     0.619    datapath_inst/dm_inst/DM_reg[189][7]_1[4]
-    SLICE_X9Y21          FDRE                                         r  datapath_inst/dm_inst/DM_reg[189][4]/D
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.238     0.384    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y11          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[4]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 start_reg_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            datapath_inst/pc_inst/pc_out_reg[5]/R
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.384ns  (logic 0.146ns (38.004%)  route 0.238ns (61.996%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.238     0.384    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y11          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[5]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 start_reg_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            datapath_inst/pc_inst/pc_out_reg[6]/R
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.384ns  (logic 0.146ns (38.004%)  route 0.238ns (61.996%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.238     0.384    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y11          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[6]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 start_reg_reg/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            datapath_inst/pc_inst/pc_out_reg[7]/R
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.384ns  (logic 0.146ns (38.004%)  route 0.238ns (61.996%))
+  Logic Levels:           1  (FDRE=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y10          FDRE                         0.000     0.000 r  start_reg_reg/C
+    SLICE_X3Y10          FDRE (Prop_fdre_C_Q)         0.146     0.146 r  start_reg_reg/Q
+                         net (fo=7, routed)           0.238     0.384    datapath_inst/pc_inst/SR[0]
+    SLICE_X2Y11          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[7]/R
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 datapath_inst/pc_inst/pc_out_reg[5]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            datapath_inst/pc_inst/pc_out_reg[7]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.565ns  (logic 0.318ns (56.249%)  route 0.247ns (43.751%))
+  Logic Levels:           4  (CARRY4=1 FDRE=1 LUT4=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y11          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[5]/C
+    SLICE_X2Y11          FDRE (Prop_fdre_C_Q)         0.164     0.164 f  datapath_inst/pc_inst/pc_out_reg[5]/Q
+                         net (fo=19, routed)          0.087     0.251    datapath_inst/pc_inst/Q[4]
+    SLICE_X3Y11          LUT6 (Prop_lut6_I1_O)        0.045     0.296 r  datapath_inst/pc_inst/pc_out[7]_i_9/O
+                         net (fo=12, routed)          0.160     0.456    datapath_inst/pc_inst/pc_out[7]_i_9_n_0
+    SLICE_X2Y11          LUT4 (Prop_lut4_I2_O)        0.045     0.501 r  datapath_inst/pc_inst/pc_out[7]_i_5/O
+                         net (fo=1, routed)           0.000     0.501    datapath_inst/pc_inst/pc_out[7]_i_5_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_S[3]_O[3])
+                                                      0.064     0.565 r  datapath_inst/pc_inst/pc_out_reg[7]_i_1/O[3]
+                         net (fo=1, routed)           0.000     0.565    datapath_inst/pc_inst/pc_out_reg[7]_i_1_n_4
+    SLICE_X2Y11          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[7]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 datapath_inst/pc_inst/pc_out_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            datapath_inst/pc_inst/pc_out_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.586ns  (logic 0.379ns (64.701%)  route 0.207ns (35.299%))
+  Logic Levels:           4  (CARRY4=2 FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y10          FDRE                         0.000     0.000 r  datapath_inst/pc_inst/pc_out_reg[2]/C
+    SLICE_X2Y10          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  datapath_inst/pc_inst/pc_out_reg[2]/Q
+                         net (fo=27, routed)          0.075     0.239    datapath_inst/pc_inst/Q[1]
+    SLICE_X3Y10          LUT6 (Prop_lut6_I0_O)        0.045     0.284 r  datapath_inst/pc_inst/pc_out[3]_i_2/O
+                         net (fo=1, routed)           0.132     0.416    datapath_inst/pc_inst/pc_out[3]_i_2_n_0
+    SLICE_X2Y10          CARRY4 (Prop_carry4_DI[3]_CO[3])
+                                                      0.117     0.533 r  datapath_inst/pc_inst/pc_out_reg[3]_i_1/CO[3]
+                         net (fo=1, routed)           0.000     0.533    datapath_inst/pc_inst/pc_out_reg[3]_i_1_n_0
+    SLICE_X2Y11          CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.053     0.586 r  datapath_inst/pc_inst/pc_out_reg[7]_i_1/O[0]
+                         net (fo=1, routed)           0.000     0.586    datapath_inst/pc_inst/pc_out_reg[7]_i_1_n_7
+    SLICE_X2Y11          FDRE                                         r  datapath_inst/pc_inst/pc_out_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 

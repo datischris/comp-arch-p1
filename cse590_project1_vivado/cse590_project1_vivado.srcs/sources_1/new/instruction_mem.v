@@ -7,7 +7,7 @@ module instruction_mem(
     );
     
     //addressing input address PC (0) to PC (254) as per 6.2.2 instruction document
-    reg [15:0] IM[0:255];
+    reg [15:0] IM[0:127];
     
     initial
     begin

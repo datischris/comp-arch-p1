@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 04/09/2025 03:08:11 AM
-// Design Name: 
-// Module Name: data_memory
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module data_memory(
     input clock,
@@ -30,41 +10,16 @@ module data_memory(
     );
     
     reg [7:0] DM[0:255];
+    integer i;
+
     
     initial
     begin
-        DM[0]  = 8'd0;      // using this for sw example
-        DM[1]  = 8'd0;      // using this for sw example
-        DM[2]  = 8'd0;
-        DM[3]  = 8'd0;
-        DM[4]  = 8'd0;
-        DM[5]  = 8'd0;
-        DM[6]  = 8'd0;
-        DM[7]  = 8'd0;
-        DM[8]  = 8'd0;
-        DM[9]  = 8'd0;
-        DM[10] = 8'd0;      // using this for lw example
-        DM[11] = 8'd255;    // using this for lw example
-        DM[12] = 8'd0;
-        DM[13] = 8'd0;
-        DM[14] = 8'd0;
-        DM[15] = 8'd0;
-        DM[16] = 8'd0;      
-        DM[17] = 8'd0;
-        DM[18] = 8'd0;
-        DM[19] = 8'd0;
-        DM[20] = 8'd0;
-        DM[21] = 8'd0;
-        DM[22] = 8'd0;
-        DM[23] = 8'd0;
-        DM[24] = 8'd0;
-        DM[25] = 8'd0;
-        DM[26] = 8'd0;
-        DM[27] = 8'd0;
-        DM[28] = 8'd0;
-        DM[29] = 8'd0;
-        DM[30] = 8'd0;
-        DM[31] = 8'd0;
+		for (i = 0; i < 256; i = i + 1) begin
+			DM[i] = 8'd0; 
+		end
+		// for sample instruction simulation
+//		 DM[11] = 8'd255; 
     end
     
     always @(*)
